@@ -41,7 +41,7 @@
 
 ---
 
-### 1. `[ ]` Dataset Description and Analysis
+### 1. Dataset Description and Analysis
 *   **Dataset Source:**
 *   **Content:**
 *   **Image Properties:**
@@ -54,7 +54,7 @@
     *   **Imbalance:**
     *   **Visualization:**
 
-### 2. `[ ]` Data Splitting Strategy
+### 2. Data Splitting Strategy
 *   **Existing Split:**
 *   **Splitting Method:**
     *   **Ratio:**
@@ -64,7 +64,7 @@
     *   **Validation Set:**
     *   **Test Set:**
 
-### 3. `[ ]` Choice of Evaluation Metrics
+### 3. Choice of Evaluation Metrics
 *   **Primary Metric:**
 *   **Justification:**
 *   **Secondary Metrics:**
@@ -73,7 +73,7 @@
     *   Specificity:
     *   Precision:
 
-### 4. `[ ]` Data Augmentation Strategy
+### 4. Data Augmentation Strategy
 *   **Necessity:**
 *   **Selected Techniques & Justification:**
     *   `[ ]` Horizontal/Vertical Flips
@@ -81,15 +81,15 @@
     *   `[ ]` Brightness/Contrast Adjustments
     *   `[ ]` Zoom
 
-### 5. `[ ]` Choice of Loss Function
+### 5. Choice of Loss Function
 *   **Selected Loss Function:**
 *   **Justification:**
 
-### 6. `[ ]` Baseline Model Selection
+### 6. Baseline Model Selection
 *   **Chosen Architecture:**
 *   **Reason for Choice:**
 
-### 7. `[ ]` Custom Model Design
+### 7. Custom Model Design
 *   **Architecture Overview:**
     *   Number of convolutional layers:
     *   Activation functions used:
@@ -98,7 +98,7 @@
     *   Classifier head:
 *   **Design Justification:**
 
-### 8. `[ ]` Performance Analysis
+### 8. Performance Analysis
 *   **Comparison Table:**
 
     | Model         | Accuracy | F1-Score | Recall | Precision |
@@ -109,19 +109,19 @@
 * **Training Curves:**
 *   **Interpretation:**
 
-### 9. `[ ]` Parameter Studies & Experiments
+### 9. Parameter Studies & Experiments
 *   **Objective:**
 *   **Experiment 1: Learning Rate Tuning**
 *   **Experiment 2: Batch Size**
 *   **Experiment 3: Data Augmentation Intensity**
 
-### 10. `[ ]` Error Analysis (Failure Cases)
+### 10. Error Analysis (Failure Cases)
 *   **Analysis of Misclassifications:**
     *   **False Positives (Non-Cracked predicted as Cracked):**
     *   **False Negatives (Cracked predicted as Non-Cracked):**
 *   **Hypothesis:**
 
-### 11. `[ ]` (Bonus) Explainability Analysis
+### 11. (Bonus) Explainability Analysis
 *   **Method Used:**
 *   **Findings:**
 *   **Insights:**
