@@ -101,10 +101,11 @@
 ### 8. Performance Analysis
 *   **Comparison Table:**
 
-    | Model         | Accuracy | F1-Score | Recall | Precision |
-    |---------------|----------|----------|--------|-----------|
-    | **Baseline**  |          |          |        |           |
-    | **Custom CNN**|          |          |        |           |
+    | ID  | Model         | Accuracy | F1-Score | Recall | Precision |
+    |-----|---------------|----------|----------|--------|-----------|
+    | 001 | **Baseline**  |          |          |        |           |
+    | 002 | **Custom CNN**|          |          |        |           |
+    | 003 |               |          |          |        |           |
 
 * **Training Curves:**
 *   **Interpretation:**
