@@ -20,38 +20,11 @@
 
 > To develop and evaluate a Convolutional Neural Network (CNN) capable of accurately classifying images of concrete surfaces as either "Cracked" or "Non-cracked".
 
-```
-🎯 Zielsetzung und Prozess
-Eine Drohne fliegt einen vordefinierten Kurs entlang eines Objekts (z. B. Brückenpfeiler). Sie nimmt dabei kontinuierlich Bilder auf. Das Deep-Learning-Modell verarbeitet diese Bilder automatisch in Echtzeit oder nach dem Flug und digitalisiert die erkannten Risse (Markierung, Speicherung der GPS-Position und der Bilddatei). Das Ziel ist eine vollständige, lückenlose Erfassung aller Schäden.
+### Use Case
 
-❗️ Konsequenz von Fehlern (Risikobewertung)
-Falsch-Negativ (FN - Echter Riss wird übersehen): Kritischer Fehler. Dies bedeutet, dass ein potenziell strukturell gefährlicher Riss nicht dokumentiert wird und unbehandelt bleibt. Die Konsequenz ist ein hohes Sicherheitsrisiko.
+> A drone flies along a predefined course around an object (e.g., bridge piers). It uses a camera to continuously search for cracks in the concrete. The deep learning model automatically processes these camera images in real time, possibly on the drone itself, and classifies the images as “positive” or “negative.” This means that we need a model that is as fast and small as possible, since the drone has a limited payload and only a short flight time, so speed plays a major role. As soon as an image is classified as “positive,” the drone marks it with a spray can. The images are stored together with the GPS location. After the flight, the images are validated by a potentially more complex model and possibly further classified. The goal is to achieve a complete, seamless recording of all damage.
+> For this project work, the focus was on the classification model that performs the initial assessment, possibly directly on the drone.
 
-Falsch-Positiv (FP - Kein Riss wird als Riss markiert): Unkritischer Fehler. Dies führt lediglich zu einer unnötigen manuellen Nachkontrolle an dieser Stelle. Die Konsequenz sind höhere Betriebskosten, aber kein Sicherheitsrisiko.
-
-📊 Empfohlene Metrik
-Primäre Metrik: Sensitivity (Recall/Trefferquote)
-
-Begründung: Wir müssen die Anzahl der Falsch-Negativen (FN) minimieren. Die Sensitivität beantwortet die Frage: "Von allen tatsächlichen Rissen, wie viele hat das Modell gefunden?" Hier ist es akzeptabel, einen niedrigeren Schwellenwert zu wählen, um die Wahrscheinlichkeit zu maximieren, jeden Riss zu finden.
-
-Sekundäre Metrik: Precision (Präzision), um zu gewährleisten, dass der Workflow durch zu viele unnötige Kontrollpunkte nicht überlastet wird.
-
-🧑‍💻 Anwendungsfall 2: Manuelle Bildkontrolle / Qualitätssicherung
-🎯 Zielsetzung und Prozess
-Ingenieure oder Techniker erstellen manuell eine Auswahl von Bildern von verdächtigen Stellen. Das Modell wird als Unterstützung oder zweite Meinung eingesetzt, um schnell zu entscheiden, ob ein Bild zur weiteren Detailanalyse an einen Sachverständigen weitergeleitet werden muss ("Hat dieses Bild einen Riss: Ja/Nein?"). Die Zuverlässigkeit der Klassifikation steht im Vordergrund.
-
-❗️ Konsequenz von Fehlern (Risikobewertung)
-Falsch-Negativ (FN - Echter Riss wird übersehen): Mittlerer Fehler. Da die manuelle Auswahl bereits eine Verdachtsfläche war, ist das Risiko geringer als bei der Drohne, aber immer noch unerwünscht.
-
-Falsch-Positiv (FP - Kein Riss wird als Riss markiert): Kritischer Fehler. Da jedes als positiv markierte Bild zu einer teuren, zeitaufwändigen Detailanalyse durch einen hoch bezahlten Experten führt, müssen Falsch-Positive minimiert werden.
-
-📊 Empfohlene Metrik
-Primäre Metrik: Precision (Präzision)
-
-Begründung: Wir müssen die Anzahl der Falsch-Positiven (FP) minimieren. Die Präzision beantwortet die Frage: "Von allen Bildern, die das Modell als Riss erkannt hat, wie viele waren tatsächlich Risse?" Hier wählen wir einen höheren Schwellenwert, um sicherzustellen, dass jede Meldung des Modells sehr zuverlässig ist.
-
-Sekundäre Metrik: Sensitivity (Recall), um zu verhindern, dass das Modell zwar präzise, aber nutzlos wird, weil es fast gar keine Risse meldet.
-```
 ## Project Summary
 
 > This project involves the entire machine learning workflow, from data analysis and preprocessing to the implementation of a baseline model and a custom-designed CNN. We will document our experiments, compare model performance using appropriate metrics, and analyze the results to determine the most effective approach for automated crack detection.
@@ -98,13 +71,17 @@ Sekundäre Metrik: Sensitivity (Recall), um zu verhindern, dass das Modell zwar 
     *   **Test Set:**
 
 ### 3. Choice of Evaluation Metrics
-*   **Primary Metric:**
-*   **Justification:**
-*   **Secondary Metrics:**
-    *   Accuracy:
-    *   Sensitivity (Recall):
-    *   Specificity:
-    *   Precision:
+We base our evaluation of key metrics on the use case. To do this, we perform a brief risk assessment.
+Consequences of errors:
+False negative (FN – genuine crack overlooked): Critical error. This means that a potentially structurally dangerous crack is not documented and remains untreated. The consequence is a high safety risk.
+
+False positive (FP – no crack is marked as a crack): Non-critical error. This only leads to an unnecessary manual recheck at this point. The consequence is higher operating costs, but no safety risk.
+
+Our primary metric that we want to optimize is therefore recall.
+By achieving the highest possible recall, we minimize the risk of a crack not being detected and becoming a safety risk.
+
+We choose precision as our secondary metric to ensure that the workflow is not overloaded with too many unnecessary checkpoints.
+Accuracy could potentially be used for training, but this is somewhat risky, as in reality many images probably do not contain cracks. Thus, if the model rated all images as “negative,” there would be a high level of accuracy.
 
 ### 4. Data Augmentation Strategy
 *   **Necessity:**
