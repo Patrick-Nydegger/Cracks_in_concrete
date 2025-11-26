@@ -34,8 +34,8 @@
 
 ✅ 1. Dataset Description and Analysis
 ✅ 2. Data Splitting Strategy
-- [ ] 3. Choice of Evaluation Metrics
-- [ ] 4. Data Augmentation Strategy
+✅ 3. Choice of Evaluation Metrics
+✅ 4. Data Augmentation Strategy
 - [ ] 5. Choice of Loss Function
 - [ ] 6. Baseline Model Selection
 - [ ] 7. Custom Model Design
@@ -128,21 +128,35 @@ False positive (FP – no crack is marked as a crack): Non-critical error. This 
 Our primary metric that we want to optimize is therefore **recall**.
    -> By achieving the highest possible recall, we minimize the risk of a crack not being detected and becoming a safety risk.
 
-We choose precision as our secondary metric to ensure that the workflow is not overloaded.
+We choose **precision** as our secondary metric to ensure that the workflow is not overloaded.
 Further we take a look at: 
-* Precision
 * Accuracy
 * F1-Score
 
 ### 4. Data Augmentation Strategy
-*   **Necessity:**
-*   **Selected Techniques & Justification:**
-*   
-  - [ ] Horizontal/Vertical Flips
-  - [ ] Rotations
-  - [ ] Brightness/Contrast Adjustments
-  - [ ] Zoom
-*   
+#### Necessity:
+Data augmentation is essential to bridge the gap between our training data and the dynamic reality of drone-based inspection. Since the model will be deployed on a flying drone, the distance to the concrete surface will constantly fluctuate, resulting in varying image resolutions and scales. Furthermore, outdoor weather conditions introduce unpredictable changes in brightness and contrast. Additionally, cracks and defects naturally occur in arbitrary orientations. By simulating these specific variances—such as scaling, brightness adjustments, and random rotations—we ensure the model is robust enough to handle the unstable conditions of a real-world flight.
+
+#### Selected Techniques & Justification:
+##### Geometric Transformations (Simulating Physical Variations):
+
+**RandomResizedCrop(size=224, scale=(0.8, 1.0)):** This is a powerful, compound transformation that addresses two key challenges simultaneously. By randomly cropping a region of the image (between 80% and 100% of the original area) and resizing it back to 224x224, it effectively simulates:
+
+- **Zooming:** Simulates variations in the distance between the camera and the concrete surface.
+- **Shifting (Translation):** Since the crop is randomly positioned, it ensures that cracks are not always centered, forcing the model to detect them anywhere in the frame.
+  
+**RandomHorizontalFlip & RandomVerticalFlip (p=0.5):** A crack's classification is independent of its orientation. These flips teach the model this fundamental invariance.
+
+**RandomRotation(degrees=45):** This simulates variations in camera angle, making the model robust to inspections from non-parallel viewpoints.
+
+##### Color Transformations (Simulating Environmental Variations):
+
+**ColorJitter(brightness=0.3, contrast=0.3):** Lighting is highly unpredictable in field inspections. Altering brightness and contrast forces the model to learn the structural shape of a crack rather than relying on specific pixel intensities, making it robust to environmental changes.
+
+
+
+<img width="1385" height="955" alt="image" src="https://github.com/user-attachments/assets/4235fed6-927a-4805-b95b-4ac8d9616278" />
+
 
 ### 5. Choice of Loss Function
 *   **Selected Loss Function:**
