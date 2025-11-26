@@ -33,7 +33,7 @@
 ## 📋 Project Checklist & Table of Contents
 
 ✅ 1. Dataset Description and Analysis
-- [ ] 2. Data Splitting Strategy
+✅ 2. Data Splitting Strategy
 - [ ] 3. Choice of Evaluation Metrics
 - [ ] 4. Data Augmentation Strategy
 - [ ] 5. Choice of Loss Function
@@ -107,30 +107,29 @@ We have partitioned the dataset into three subsets with the following ratio:
 
 
 **Final Split:**
-Training - Positive: 14000
-Training - Negative: 14000
--> **Total Training: 28000**
 
-Validation - Positive: 3000
-Validation - Negative: 3000
--> **Total Validation: 6000**
+```
+Training =      Positive: 14000 + Negative: 14000   -> Total Training:     28000
 
-Test - Positive: 3000
-Test - Negative: 3000
--> **Total Test: 6000**
+Validation =    Positive: 3000 + Negative: 3000     -> Total Validation:   6000
+
+Test =          Positive: 3000 + Negative: 3000     -> Total Test:         6000
+```
 
 ### 3. Choice of Evaluation Metrics
 We base our evaluation of key metrics on the use case. To do this, we perform a brief risk assessment.
-Consequences of errors:
+
+#### Consequences of errors:
+
 False negative (FN – genuine crack overlooked): Critical error. This means that a potentially structurally dangerous crack is not documented and remains untreated. The consequence is a high safety risk.
 
 False positive (FP – no crack is marked as a crack): Non-critical error. This only leads to an unnecessary manual recheck at this point. The consequence is higher operating costs, but no safety risk.
 
-Our primary metric that we want to optimize is therefore recall.
-By achieving the highest possible recall, we minimize the risk of a crack not being detected and becoming a safety risk.
+Our primary metric that we want to optimize is therefore **recall**.
+   -> By achieving the highest possible recall, we minimize the risk of a crack not being detected and becoming a safety risk.
 
-We choose precision as our secondary metric to ensure that the workflow is not overloaded with too many unnecessary checkpoints.
-Further we take al look at: 
+We choose precision as our secondary metric to ensure that the workflow is not overloaded.
+Further we take a look at: 
 * Precision
 * Accuracy
 * F1-Score
