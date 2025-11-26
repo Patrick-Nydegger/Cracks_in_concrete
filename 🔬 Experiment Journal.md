@@ -142,15 +142,32 @@ Accuracy could potentially be used for training, but this is somewhat risky, as 
 ### 8. Performance Analysis
 *   **Comparison Table:**
 
-    | Model         | Accuracy | F1-Score | Recall | Precision |
-    |---------------|----------|----------|--------|-----------|
-    | **Baseline**  |          |          |        |           |
-    | **Custom CNN**|          |          |        |           |
+    | Model             | Precision | Recall  | Accuracy | F1-Score  |
+    |-------------------|-----------|---------|----------|-----------|
+    | **MobileNetV2**   |           |         |          |           |
+    | **OPNet**         |           |         |          |           |
 
-* **Training Curves:**
+*   **Training Curves:**
+  
 *   **Interpretation:**
 
 ### 9. Parameter Studies & Experiments
+*   **Comparison Table:**
+
+    | Model            |  Experiment   | Precision | Recall  | Accuracy | F1-Score  |
+    |------------------|---------------|-----------|---------|----------|-----------|
+    | **MobileNetV2**  | Baseline      |           |         |          |           |
+    | **OPNet**        | Baseline      |           |         |          |           |
+    | **MobileNetV2**  | 1 desc.       |           |         |          |           |
+    | **OPNet**        | 1 desc.       |           |         |          |           |
+    | **MobileNetV2**  | 2 desc.       |           |         |          |           |
+    | **OPNet**        | 2 desc.       |           |         |          |           |
+    | **MobileNetV2**  | 3 desc.       |           |         |          |           |
+    | **OPNet**        | 3 desc.       |           |         |          |           |
+    | **MobileNetV2**  | 4 desc.       |           |         |          |           |
+    | **OPNet**        | 4 desc.       |           |         |          |           |
+
+    
 *   **Objective:**
 *   **Experiment 1: Learning Rate Tuning**
 *   **Experiment 2: Batch Size**
