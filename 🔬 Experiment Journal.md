@@ -33,9 +33,13 @@
 ## 📋 Project Checklist & Table of Contents
 
 ✅ 1. Dataset Description and Analysis
+
 ✅ 2. Data Splitting Strategy
+
 ✅ 3. Choice of Evaluation Metrics
+
 ✅ 4. Data Augmentation Strategy
+
 - [ ] 5. Choice of Loss Function
 - [ ] 6. Baseline Model Selection
 - [ ] 7. Custom Model Design
@@ -128,7 +132,8 @@ False positive (FP – no crack is marked as a crack): Non-critical error. This 
 Our primary metric that we want to optimize is therefore **recall**.
    -> By achieving the highest possible recall, we minimize the risk of a crack not being detected and becoming a safety risk.
 
-We choose **precision** as our secondary metric to ensure that the workflow is not overloaded.
+We choose **Specificity** as our secondary metric. This measures the model's ability to correctly identify non-cracked surfaces. A high specificity means a low number of False Positives. While less critical than Recall, a reasonably high Specificity is still desirable to keep the cost of unnecessary manual inspections low.
+
 Further we take a look at: 
 * Accuracy
 * F1-Score
@@ -178,7 +183,7 @@ Data augmentation is essential to bridge the gap between our training data and t
 ### 8. Performance Analysis
 *   **Comparison Table:**
 
-    | Model             | Recall    | Precision  | Accuracy | F1-Score  |
+    | Model             | Recall    | Specificity  | Accuracy | F1-Score  |
     |-------------------|-----------|------------|----------|-----------|
     | **MobileNetV2**   |           |            |          |           |
     | **OPNet**         |           |            |          |           |
@@ -190,7 +195,7 @@ Data augmentation is essential to bridge the gap between our training data and t
 ### 9. Parameter Studies & Experiments
 *   **Comparison Table:**
 
-    | Model            |  Experiment   | Recall    | Precision  | Accuracy | F1-Score  |
+    | Model            |  Experiment   | Recall    | Specificity  | Accuracy | F1-Score  |
     |------------------|---------------|-----------|------------|----------|-----------|
     | **MobileNetV2**  | Baseline      |           |            |          |           |
     | **OPNet**        | Baseline      |           |            |          |           |
