@@ -52,47 +52,72 @@ The dataset used for this project is the "Concrete Crack Images for Classificati
 [https://www.kaggle.com/datasets/arnavr10880/concrete-crack-images-for-classification/data]
 
 It contains a total of 40,000 images of concrete surfaces, collected from various buildings on the METU Campus. The images are provided in RGB format with a resolution of 227x227 pixels. The dataset is generated from 458 high-resolution images (4032x3024 pixel) with the method proposed by Zhang et al (2016).
-No data augmentation in terms of random rotation or flipping was applied
+No data augmentation in terms of random rotation or flipping was applied.
 
-**The data is pre-labeled and divided into two distinct classes:**
+
+#### The data is pre-labeled and divided into two distinct classes:
 
 Positive: Images containing a visible crack.
 Negative: Images of concrete surfaces without any cracks.
 
-### Visual analysis of sample images reveals some key characteristics:**
+#### Visual analysis of sample images reveals some key characteristics:
 
-Image Quality: The images vary in terms of lighting, surface texture, and coloration.
-Crack Variety: Cracks in the 'Positive' samples range from very fine, hairline fractures to large, obvious fissures.
-Potential Challenges: Some 'Negative' samples contain features like shadows, stains, or joints in the concrete that could visually mimic cracks. This ambiguity is expected to be the primary challenge for our classification model.
+**Image Quality:** The images vary in terms of lighting, surface texture, and coloration.
+**Crack Variety:** Cracks in the 'Positive' samples range from very fine, hairline fractures to large, obvious fissures.
+**Potential Challenges:** Some 'Negative' samples contain features like shadows, stains, or joints in the concrete that could visually mimic cracks. This ambiguity is expected to be the primary challenge for our classification model.
 
 
 <img width="1107" height="575" alt="image" src="https://github.com/user-attachments/assets/33d32723-cd46-436f-92cc-4e04301753ad" />
 
 
- ### Our analysis confirms that the dataset consists of exactly 20,000 images for the 'Positive' class and 20,000 images for the 'Negative' class.
+#### Our analysis confirms that the dataset consists of exactly 20,000 images for the 'Positive' class and 20,000 images for the 'Negative' class.
  
-<img width="713" height="547" alt="image" src="https://github.com/user-attachments/assets/54126223-27e3-4544-85d2-3be8ece9761f" />
-
 The dataset is perfectly balanced, with a 50/50 split between the two classes. This is an ideal scenario for a binary classification task.
 
-**Implications of this balance:**
+#### Implications of this balance:
 
 There is a lower risk of the model developing a bias towards a majority class, which often happens in imbalanced datasets.
 Since the dataset is well-balanced, accuracy can reliably be used as a performance metric.
 We do not need to employ complex techniques to handle class imbalance, such as oversampling or undersampling.
+ 
+<img width="713" height="547" alt="image" src="https://github.com/user-attachments/assets/54126223-27e3-4544-85d2-3be8ece9761f" />
+
+
 
 ___
 
 
 ### 2. Data Splitting Strategy
-*   **Existing Split:**
-*   **Splitting Method:**
-    *   **Ratio:**
-    *   **Stratification:**
-*   **Final Split Counts:**
-    *   **Training Set:**
-    *   **Validation Set:**
-    *   **Test Set:**
+#### Existing Split:
+The original dataset from Kaggle does not provide a pre-defined training, validation, or test split. It only provides two folders, Positive and Negative, containing all 40,000 images.
+#### Splitting Method:
+We have partitioned the dataset into three subsets with the following ratio:
+
+**Training Set: 70% of the data**
+
+   -> The training set is deliberately made the largest partition. This provides the model with a rich and diverse set of 28,000 examples, which is crucial for learning the complex and subtle features that distinguish cracked from non-cracked concrete surfaces.
+   
+**Validation Set: 15% of the data**
+
+   -> The validation set (6,000 images) serves as a proxy for unseen data during the training phase. It is used to monitor the model's performance epoch by epoch, allowing us to detect overfitting and to make informed decisions about hyperparameter tuning (e.g., adjusting the learning rate or deciding on the number of epochs). 
+  
+**Test Set: 15% of the data**
+
+   -> The test set (6,000 images) is the final holdout set. It remains completely untouched during the entire development and tuning process. Its sole purpose is to provide a single, final, and unbiased assessment of our best model's performance on completely new data, simulating its deployment in a real-world scenario.
+
+
+**Final Split:**
+Training - Positive: 14000
+Training - Negative: 14000
+-> **Total Training: 28000**
+
+Validation - Positive: 3000
+Validation - Negative: 3000
+-> **Total Validation: 6000**
+
+Test - Positive: 3000
+Test - Negative: 3000
+-> **Total Test: 6000**
 
 ### 3. Choice of Evaluation Metrics
 We base our evaluation of key metrics on the use case. To do this, we perform a brief risk assessment.
@@ -105,7 +130,10 @@ Our primary metric that we want to optimize is therefore recall.
 By achieving the highest possible recall, we minimize the risk of a crack not being detected and becoming a safety risk.
 
 We choose precision as our secondary metric to ensure that the workflow is not overloaded with too many unnecessary checkpoints.
-Accuracy could potentially be used for training, but this is somewhat risky, as in reality many images probably do not contain cracks. Thus, if the model rated all images as “negative,” there would be a high level of accuracy.
+Further we take al look at: 
+* Precision
+* Accuracy
+* F1-Score
 
 ### 4. Data Augmentation Strategy
 *   **Necessity:**
@@ -115,10 +143,6 @@ Accuracy could potentially be used for training, but this is somewhat risky, as 
   - [ ] Rotations
   - [ ] Brightness/Contrast Adjustments
   - [ ] Zoom
-    *   `[ ]` Rotations
-    *   `[ ]` Brightness/Contrast Adjustments
-    *   `[ ]` Zoom
- 
 *   
 
 ### 5. Choice of Loss Function
@@ -141,10 +165,10 @@ Accuracy could potentially be used for training, but this is somewhat risky, as 
 ### 8. Performance Analysis
 *   **Comparison Table:**
 
-    | Model             | Precision | Recall  | Accuracy | F1-Score  |
-    |-------------------|-----------|---------|----------|-----------|
-    | **MobileNetV2**   |           |         |          |           |
-    | **OPNet**         |           |         |          |           |
+    | Model             | Recall    | Precision  | Accuracy | F1-Score  |
+    |-------------------|-----------|------------|----------|-----------|
+    | **MobileNetV2**   |           |            |          |           |
+    | **OPNet**         |           |            |          |           |
 
 *   **Training Curves:**
   
@@ -153,18 +177,18 @@ Accuracy could potentially be used for training, but this is somewhat risky, as 
 ### 9. Parameter Studies & Experiments
 *   **Comparison Table:**
 
-    | Model            |  Experiment   | Precision | Recall  | Accuracy | F1-Score  |
-    |------------------|---------------|-----------|---------|----------|-----------|
-    | **MobileNetV2**  | Baseline      |           |         |          |           |
-    | **OPNet**        | Baseline      |           |         |          |           |
-    | **MobileNetV2**  | 1 desc.       |           |         |          |           |
-    | **OPNet**        | 1 desc.       |           |         |          |           |
-    | **MobileNetV2**  | 2 desc.       |           |         |          |           |
-    | **OPNet**        | 2 desc.       |           |         |          |           |
-    | **MobileNetV2**  | 3 desc.       |           |         |          |           |
-    | **OPNet**        | 3 desc.       |           |         |          |           |
-    | **MobileNetV2**  | 4 desc.       |           |         |          |           |
-    | **OPNet**        | 4 desc.       |           |         |          |           |
+    | Model            |  Experiment   | Recall    | Precision  | Accuracy | F1-Score  |
+    |------------------|---------------|-----------|------------|----------|-----------|
+    | **MobileNetV2**  | Baseline      |           |            |          |           |
+    | **OPNet**        | Baseline      |           |            |          |           |
+    | **MobileNetV2**  | 1 desc.       |           |            |          |           |
+    | **OPNet**        | 1 desc.       |           |            |          |           |
+    | **MobileNetV2**  | 2 desc.       |           |            |          |           |
+    | **OPNet**        | 2 desc.       |           |            |          |           |
+    | **MobileNetV2**  | 3 desc.       |           |            |          |           |
+    | **OPNet**        | 3 desc.       |           |            |          |           |
+    | **MobileNetV2**  | 4 desc.       |           |            |          |           |
+    | **OPNet**        | 4 desc.       |           |            |          |           |
 
     
 *   **Objective:**
