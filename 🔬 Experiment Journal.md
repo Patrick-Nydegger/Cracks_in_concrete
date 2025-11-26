@@ -33,7 +33,7 @@
 
 ## 📋 Project Checklist & Table of Contents
 
-- [x] 1. Dataset Description and Analysis
+✅ 1. Dataset Description and Analysis
 - [ ] 2. Data Splitting Strategy
 - [ ] 3. Choice of Evaluation Metrics
 - [ ] 4. Data Augmentation Strategy
