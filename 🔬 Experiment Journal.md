@@ -48,18 +48,6 @@
 ---
 
 ### 1. Dataset Description and Analysis
-*   **Dataset Source:**
-*   **Content:**
-*   **Image Properties:**
-    *   Dimensions:
-    *   Color Space:
-    *   Total number of images:
-*   **Class Distribution Analysis:**
-    *   **Class "Cracked":**
-    *   **Class "Non-Cracked":**
-    *   **Imbalance:**
-    *   **Visualization:**
- 
 
 The dataset used for this project is the "Concrete Crack Images for Classification" dataset, sourced from Kaggle. 
 [https://www.kaggle.com/datasets/arnavr10880/concrete-crack-images-for-classification/data]
