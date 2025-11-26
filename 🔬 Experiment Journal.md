@@ -1,7 +1,6 @@
 # 🔬 Experiment Journal: 
 # Use case: Automatic inspection of bridge piers and detection of cracks in concrete
 
----
 
 ## **Project Details**
 
