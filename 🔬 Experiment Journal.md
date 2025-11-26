@@ -33,7 +33,7 @@
 
 ## 📋 Project Checklist & Table of Contents
 
-- [ ] 1. Dataset Description and Analysis
+- [x] 1. Dataset Description and Analysis
 - [ ] 2. Data Splitting Strategy
 - [ ] 3. Choice of Evaluation Metrics
 - [ ] 4. Data Augmentation Strategy
@@ -59,6 +59,43 @@
     *   **Class "Non-Cracked":**
     *   **Imbalance:**
     *   **Visualization:**
+ 
+
+The dataset used for this project is the "Concrete Crack Images for Classification" dataset, sourced from Kaggle. 
+[https://www.kaggle.com/datasets/arnavr10880/concrete-crack-images-for-classification/data]
+
+It contains a total of 40,000 images of concrete surfaces, collected from various buildings on the METU Campus. The images are provided in RGB format with a resolution of 227x227 pixels. The dataset is generated from 458 high-resolution images (4032x3024 pixel) with the method proposed by Zhang et al (2016).
+No data augmentation in terms of random rotation or flipping was applied
+
+**The data is pre-labeled and divided into two distinct classes:**
+
+Positive: Images containing a visible crack.
+Negative: Images of concrete surfaces without any cracks.
+
+### Visual analysis of sample images reveals some key characteristics:**
+
+Image Quality: The images vary in terms of lighting, surface texture, and coloration.
+Crack Variety: Cracks in the 'Positive' samples range from very fine, hairline fractures to large, obvious fissures.
+Potential Challenges: Some 'Negative' samples contain features like shadows, stains, or joints in the concrete that could visually mimic cracks. This ambiguity is expected to be the primary challenge for our classification model.
+
+
+<img width="1107" height="575" alt="image" src="https://github.com/user-attachments/assets/33d32723-cd46-436f-92cc-4e04301753ad" />
+
+
+ ### Our analysis confirms that the dataset consists of exactly 20,000 images for the 'Positive' class and 20,000 images for the 'Negative' class.
+ 
+<img width="713" height="547" alt="image" src="https://github.com/user-attachments/assets/54126223-27e3-4544-85d2-3be8ece9761f" />
+
+The dataset is perfectly balanced, with a 50/50 split between the two classes. This is an ideal scenario for a binary classification task.
+
+**Implications of this balance:**
+
+There is a lower risk of the model developing a bias towards a majority class, which often happens in imbalanced datasets.
+Since the dataset is well-balanced, accuracy can reliably be used as a performance metric.
+We do not need to employ complex techniques to handle class imbalance, such as oversampling or undersampling.
+
+___
+
 
 ### 2. Data Splitting Strategy
 *   **Existing Split:**
