@@ -145,10 +145,11 @@ Data augmentation is essential to bridge the gap between our training data and t
 #### Selected Techniques & Justification:
 ##### Geometric Transformations (Simulating Physical Variations):
 
-**RandomResizedCrop(size=224, scale=(0.8, 1.0)):** This is a powerful, compound transformation that addresses two key challenges simultaneously. By randomly cropping a region of the image (between 80% and 100% of the original area) and resizing it back to 224x224, it effectively simulates:
+**RandomResizedCrop(size=224, scale=(0.8, 1.0)):** This is a powerful, compound transformation that addresses two key challenges simultaneously. By randomly cropping a region of the image (between 80% and 100% of the original area) and resizing it to 224x224, it effectively simulates:
 
 - **Zooming:** Simulates variations in the distance between the camera and the concrete surface.
 - **Shifting (Translation):** Since the crop is randomly positioned, it ensures that cracks are not always centered, forcing the model to detect them anywhere in the frame.
+- **Preparation for Selected Model**: As will be evaluated later in the report, our chosen network requires an image resolution of 224x224. The excess pixels of the current resolution of 227x227 are not simply cropped, but rather the entire image is converted and scaled to the required size.
   
 **RandomHorizontalFlip & RandomVerticalFlip (p=0.5):** A crack's classification is independent of its orientation. These flips teach the model this fundamental invariance.
 
