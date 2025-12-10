@@ -164,7 +164,23 @@ Data augmentation is essential to bridge the gap between our training data and t
 
 
 ### 5. Choice of Loss Function
-*   **Selected Loss Function:**
+
+The choice of loss function is being strategically managed to align the model's training objective with the critical project goal: minimizing dangerous errors.
+
+#### 1. Baseline: Binary Cross-Entropy (BCE)
+The initial model will use Binary Cross-Entropy (BCE).
+BCE is the standard, mathematically robust choice for binary classification (crack vs. no crack). It will serve to establish a reliable, well-calibrated performance benchmark, ensuring the fundamental model architecture is sound before specialized adjustments are made.
+
+#### 2. The Contextual Challenge: Asymmetric Risk
+The dataset's error costs are asymmetric: a False Negative (missing a crack) is catastrophically more expensive than a False Positive (a false alarm).
+This necessitates optimizing the model for high Sensitivity (Recall)—its ability to correctly identify all actual crack cases.
+
+#### 3. Advanced Solution for Experiments in Chapter 9: Weighted BCE
+To address the asymmetric risk, the strategy includes an experimental pivot to Weighted Binary Cross-Entropy (Weighted BCE).
+Weighted BCE uses a pos_weight parameter to assign a significantly higher penalty to errors involving the critical 'Positive' (crack) class.
+This directly forces the training process to focus on driving down the rate of dangerous False Negatives, thus directly tailoring the model's optimization to achieve the project's paramount safety objective.
+
+
 *   **Justification:**
 
 ### 6. Baseline Model Selection
