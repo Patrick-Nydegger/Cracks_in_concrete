@@ -120,7 +120,7 @@ Validation =    Positive: 3000 + Negative: 3000     -> Total Validation:   6000
 Test =          Positive: 3000 + Negative: 3000     -> Total Test:         6000
 ```
 
-### 3. Choice of Evaluation Metrics
+### 3. Choice of Evaluation Metrics test
 We base our evaluation of key metrics on the use case. To do this, we perform a brief risk assessment.
 
 #### Consequences of errors:
