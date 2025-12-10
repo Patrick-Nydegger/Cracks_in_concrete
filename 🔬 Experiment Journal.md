@@ -171,8 +171,7 @@ The choice of loss function is being strategically managed to align the model's 
 The initial model will use Binary Cross-Entropy (BCE).
 BCE is the standard, mathematically robust choice for binary classification (crack vs. no crack). It will serve to establish a reliable, well-calibrated performance benchmark, ensuring the fundamental model architecture is sound before specialized adjustments are made.
 
-#### 2. The Contextual Challenge: Asymmetric Risk
-The dataset's error costs are asymmetric: a False Negative (missing a crack) is catastrophically more expensive than a False Positive (a false alarm).
+However we need to understand, that the dataset's error costs are asymmetric: a False Negative (missing a crack) is catastrophically more expensive than a False Positive (a false alarm).
 This necessitates optimizing the model for high Sensitivity (Recall)—its ability to correctly identify all actual crack cases.
 
 #### 3. Advanced Solution for Experiments in Chapter 9: Weighted BCE
@@ -184,7 +183,23 @@ This directly forces the training process to focus on driving down the rate of d
 *   **Justification:**
 
 ### 6. Baseline Model Selection
-*   **Chosen Architecture:**
+To select the most appropriate baseline for our "Drone Inspection" use case, we performed a comprehensive comparative analysis of four standard architectures. These models were evaluated based on their inherent suitability for safety-critical and resource-constrained environments.
+
+| Architecture | Pros | Cons | Verdict for Baseline |
+| :--- | :--- | :--- | :--- |
+| **VGG-16** | Simple architecture; strong feature extraction. | Massive parameter count (~138M); very slow inference; unsuitable for drones. | **Rejected** due to inefficiency. |
+| **ResNet-18** | Robust performance; standard academic baseline. | Larger (~44MB) and slower than mobile-optimized architectures. | **Rejected** in favor of higher efficiency. |
+| **MobileNetV2** | **Extremely lightweight (~13MB)**; built specifically for edge devices; very fast inference; Inverted Residual Blocks efficient for gradients. | Slightly lower capacity than deep ResNets, but sufficient for binary crack detection. | **Selected** as the optimal baseline for drones. |
+| **EfficientNet-B0**| State-of-the-art accuracy-to-efficiency ratio. | More complex scaling; potentially higher latency on some specific edge hardware compared to MobileNet. | **Reserve Candidate**. |
+
+We have chosen **MobileNetV2** as our primary baseline model.
+
+Our choice is driven by the specific constraints of our **Drone Inspection Use Case**:
+
+1.  **Efficiency is Key (Priority 2):** A drone has limited battery life and computational power. MobileNetV2 is explicitly designed for such environments. It uses **Depthwise Separable Convolutions**, which drastically reduce the number of parameters (~3.5 Million vs ~11 Million for ResNet-18) and computational cost (FLOPs) without a significant drop in accuracy for visual tasks like crack detection.
+2.  **High Suitability for Edge Deployment:** Our goal is real-time or near-real-time processing on the device. MobileNetV2's low latency makes it the superior candidate for running directly on the drone's embedded hardware (e.g., Raspberry Pi or Nvidia Jetson).
+
+
 *   **Reason for Choice:**
 
 ### 7. Custom Model Design
