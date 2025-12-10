@@ -120,7 +120,7 @@ Validation =    Positive: 3000 + Negative: 3000     -> Total Validation:   6000
 Test =          Positive: 3000 + Negative: 3000     -> Total Test:         6000
 ```
 
-### 3. Choice of Evaluation Metrics test
+### 3. Choice of Evaluation Metrics
 We base our evaluation of key metrics on the use case. To do this, we perform a brief risk assessment.
 
 #### Consequences of errors:
@@ -174,13 +174,9 @@ BCE is the standard, mathematically robust choice for binary classification (cra
 However we need to understand, that the dataset's error costs are asymmetric: a False Negative (missing a crack) is catastrophically more expensive than a False Positive (a false alarm).
 This necessitates optimizing the model for high Sensitivity (Recall)—its ability to correctly identify all actual crack cases.
 
-#### 3. Advanced Solution for Experiments in Chapter 9: Weighted BCE
-To address the asymmetric risk, the strategy includes an experimental pivot to Weighted Binary Cross-Entropy (Weighted BCE).
-Weighted BCE uses a pos_weight parameter to assign a significantly higher penalty to errors involving the critical 'Positive' (crack) class.
-This directly forces the training process to focus on driving down the rate of dangerous False Negatives, thus directly tailoring the model's optimization to achieve the project's paramount safety objective.
+#### 2. Strategic Outlook: Weighted BCE for Future Optimization
+To further address this asymmetric risk in future iterations or real-world deployment, we propose implementing a Weighted Binary Cross-Entropy. This technique uses a pos_weight parameter to assign a significantly higher penalty to errors involving the critical 'Positive' (crack) class. This would directly force the training process to focus on driving down the rate of dangerous False Negatives, tailoring the model's optimization even more aggressively towards the project's paramount safety objective. For this initial study, standard BCE proved sufficient to achieve high sensitivity, but Weighted BCE remains a powerful tool for fine-tuning the safety margin.
 
-
-*   **Justification:**
 
 ### 6. Baseline Model Selection
 To select the most appropriate baseline for our "Drone Inspection" use case, we performed a comprehensive comparative analysis of four standard architectures. These models were evaluated based on their inherent suitability for safety-critical and resource-constrained environments.
