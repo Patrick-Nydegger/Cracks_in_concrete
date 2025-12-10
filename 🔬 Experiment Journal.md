@@ -40,7 +40,7 @@
 
 ✅ 4. Data Augmentation Strategy
 
-- [ ] 5. Choice of Loss Function
+✅ 5. Choice of Loss Function
 - [ ] 6. Baseline Model Selection
 - [ ] 7. Custom Model Design
 - [ ] 8. Performance Analysis
