@@ -251,10 +251,22 @@ Our choice is driven by the specific constraints of our **Drone Inspection Use C
     *   **Result:** The lower learning rate improved OPNet's Recall from 99.63% to 99.73%. The training was more stable in later epochs, avoiding oscillations. For MobileNetV2, it pushed Recall to a near-perfect 99.93%, albeit with a tiny drop in Specificity.
     *   **Conclusion:** Lower Learning Rate is beneficial for maximizing sensitivity in both architectures.
 
+*   Comparison: MobileNetV2 LR Impact 
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_MobileNetV2_Low_LR_(1e-4).png" />
+
+*   Comparison: OPNet LR Impact
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_OPNet_Low_LR_(1e-4).png" />
+
 *   **Experiment 2: Batch Size**
     *   **Method:** We reduced the Batch Size from 64 to 32. Smaller batches introduce more noise into the gradient estimation, which can act as a regularizer.
     *   **Result:** This was the most successful experiment for OPNet. It boosted Recall to **99.83%** and Accuracy to 99.77%, bringing the custom model within touching distance (0.07%) of the original baseline.
     *   **Conclusion:** The regularization effect of the smaller batch size helped the lightweight OPNet generalize better to unseen validation data.
+ 
+*   Comparison: MobileNetV2 Batch Size Impact 
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_MobileNetV2_Small_Batch_(32).png" />
+
+*   Comparison: OPNet Batch Size Impact 
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_OPNet_Small_Batch_(32).png" />
 
 *   **Experiment 3: ...**
 
