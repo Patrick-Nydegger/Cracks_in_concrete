@@ -49,7 +49,7 @@
 - [ ] 8. Performance Analysis
 - [ ] 9. Parameter Studies & Experiments
 - [ ] 10. Error Analysis (Failure Cases)
-- [ ] 11. (Bonus) Explainability Analysis
+✅ 11. (Bonus) Explainability Analysis
 
 ---
 
@@ -574,9 +574,9 @@ F1-Score:    0.9972
 
 ### 11. (Bonus) Explainability Analysis
 *    **Method Used:**
-To validate the model's decision-making process, we applied two complementary XAI techniques to a batch of 10 "Positive" validation images.
-Grad-CAM (Gradient-weighted Class Activation Mapping): We visualized the activation of the final convolutional layer to identify the general regions the model focuses on.
-Integrated Gradients (IG): We computed the pixel-level attribution by integrating gradients along a path from a black baseline image to the input image, revealing exactly which pixels contributed most to the "Crack" prediction.
+To validate each model's decision-making process, we applied two complementary XAI techniques to a batch of 10 "Positive" validation images.
+     * Grad-CAM (Gradient-weighted Class Activation Mapping): We visualized the activation of the final convolutional layer to identify the general regions the model focuses on.
+     * Integrated Gradients (IG): We computed the pixel-level attribution by integrating gradients along a path from a black baseline image to the input image, revealing exactly which pixels contributed most to the "Crack" prediction.
 *    **Findings:**
      * High Confidence: The model correctly classifies all 10 samples with near-certainty (P(Crack) ≈ 1.000).
      * Localization (Grad-CAM): The Grad-CAM heatmaps (Red/Yellow blobs) consistently follow the trajectory of the cracks. Whether the crack is vertical, diagonal, or branching, the high-activation regions align perfectly with the structural defect, though the resolution is coarse.
