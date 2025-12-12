@@ -364,7 +364,35 @@ Estimated Total Size (MB): 50.33
     | **OPNet**         |  99.63%   |   99.83%   |   99.73% |   0.9973  |
 
 *   **Training Curves:**
-<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/baseline_training-performance.png" />    
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/baseline_training-performance.png" />
+
+```
+Created model save directory: /content/drive/MyDrive/models
+Starting training for MobileNetV2...
+Epoch 1/10 | Loss: 0.0085 | SENS (Recall): 0.9990 | Spec: 0.9947 | Acc: 0.9968 | F1: 0.9968
+Epoch 2/10 | Loss: 0.0075 | SENS (Recall): 0.9983 | Spec: 0.9973 | Acc: 0.9978 | F1: 0.9978
+Epoch 3/10 | Loss: 0.0069 | SENS (Recall): 0.9973 | Spec: 0.9980 | Acc: 0.9977 | F1: 0.9977
+Epoch 4/10 | Loss: 0.0081 | SENS (Recall): 0.9977 | Spec: 0.9970 | Acc: 0.9973 | F1: 0.9973
+Epoch 5/10 | Loss: 0.0071 | SENS (Recall): 0.9977 | Spec: 0.9973 | Acc: 0.9975 | F1: 0.9975
+Epoch 6/10 | Loss: 0.0047 | SENS (Recall): 0.9977 | Spec: 0.9987 | Acc: 0.9982 | F1: 0.9982
+Epoch 7/10 | Loss: 0.0060 | SENS (Recall): 0.9983 | Spec: 0.9973 | Acc: 0.9978 | F1: 0.9978
+Epoch 8/10 | Loss: 0.0073 | SENS (Recall): 0.9973 | Spec: 0.9980 | Acc: 0.9977 | F1: 0.9977
+Epoch 9/10 | Loss: 0.0085 | SENS (Recall): 0.9987 | Spec: 0.9963 | Acc: 0.9975 | F1: 0.9975
+Epoch 10/10 | Loss: 0.0068 | SENS (Recall): 0.9967 | Spec: 0.9983 | Acc: 0.9975 | F1: 0.9975
+MobileNetV2 complete in 29m
+Starting training for OPNet...
+Epoch 1/10 | Loss: 0.0371 | SENS (Recall): 0.9780 | Spec: 0.9983 | Acc: 0.9882 | F1: 0.9880
+Epoch 2/10 | Loss: 0.0288 | SENS (Recall): 0.9887 | Spec: 0.9990 | Acc: 0.9938 | F1: 0.9938
+Epoch 3/10 | Loss: 0.0399 | SENS (Recall): 0.9757 | Spec: 0.9973 | Acc: 0.9865 | F1: 0.9864
+Epoch 4/10 | Loss: 0.0168 | SENS (Recall): 0.9960 | Spec: 0.9970 | Acc: 0.9965 | F1: 0.9965
+Epoch 5/10 | Loss: 0.0163 | SENS (Recall): 0.9977 | Spec: 0.9970 | Acc: 0.9973 | F1: 0.9973
+Epoch 6/10 | Loss: 0.0155 | SENS (Recall): 0.9950 | Spec: 0.9990 | Acc: 0.9970 | F1: 0.9970
+Epoch 7/10 | Loss: 0.0405 | SENS (Recall): 0.9987 | Spec: 0.9833 | Acc: 0.9910 | F1: 0.9911
+Epoch 8/10 | Loss: 0.0141 | SENS (Recall): 0.9937 | Spec: 0.9993 | Acc: 0.9965 | F1: 0.9965
+Epoch 9/10 | Loss: 0.0121 | SENS (Recall): 0.9967 | Spec: 0.9977 | Acc: 0.9972 | F1: 0.9972
+Epoch 10/10 | Loss: 0.0146 | SENS (Recall): 0.9980 | Spec: 0.9963 | Acc: 0.9972 | F1: 0.9972
+OPNet complete in 27m
+```  
   
 *   **Interpretation:**
     *   **Baseline Superiority:** MobileNetV2 demonstrates state-of-the-art performance, achieving nearly perfect recall (99.90%) very early in training (Epoch 6). This validates the effectiveness of transfer learning from ImageNet features for texture-based tasks like crack detection.
@@ -395,29 +423,100 @@ Estimated Total Size (MB): 50.33
     *   **Result:** The lower learning rate improved OPNet's Recall from 99.63% to 99.73%. The training was more stable in later epochs, avoiding oscillations. For MobileNetV2, it pushed Recall to a near-perfect 99.93%, albeit with a tiny drop in Specificity.
     *   **Conclusion:** Lower Learning Rate is beneficial for maximizing sensitivity in both architectures.
 
-*   Comparison: MobileNetV2 LR Impact 
+*   Comparison: MobileNetV2 LR Impact
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_MobileNetV2_Low_LR_(1e-4).png" />
+
+```
+--- Training MobileNetV2 (Low LR) ---
+Starting training for MobileNetV2 (Low LR)...
+Epoch 1/10 | Loss: 0.0068 | SENS (Recall): 0.9980 | Spec: 0.9980 | Acc: 0.9980 | F1: 0.9980
+Epoch 2/10 | Loss: 0.0044 | SENS (Recall): 0.9993 | Spec: 0.9977 | Acc: 0.9985 | F1: 0.9985
+Epoch 3/10 | Loss: 0.0039 | SENS (Recall): 0.9990 | Spec: 0.9987 | Acc: 0.9988 | F1: 0.9988
+Epoch 4/10 | Loss: 0.0043 | SENS (Recall): 0.9993 | Spec: 0.9983 | Acc: 0.9988 | F1: 0.9988
+Epoch 5/10 | Loss: 0.0056 | SENS (Recall): 0.9973 | Spec: 0.9993 | Acc: 0.9983 | F1: 0.9983
+Epoch 6/10 | Loss: 0.0050 | SENS (Recall): 0.9980 | Spec: 0.9993 | Acc: 0.9987 | F1: 0.9987
+Epoch 7/10 | Loss: 0.0060 | SENS (Recall): 0.9983 | Spec: 0.9983 | Acc: 0.9983 | F1: 0.9983
+Epoch 8/10 | Loss: 0.0057 | SENS (Recall): 0.9987 | Spec: 0.9973 | Acc: 0.9980 | F1: 0.9980
+Epoch 9/10 | Loss: 0.0050 | SENS (Recall): 0.9993 | Spec: 0.9973 | Acc: 0.9983 | F1: 0.9983
+Epoch 10/10 | Loss: 0.0050 | SENS (Recall): 0.9990 | Spec: 0.9977 | Acc: 0.9983 | F1: 0.9983
+MobileNetV2 (Low LR) complete in 28m
+```
 
 *   Comparison: OPNet LR Impact
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_OPNet_Low_LR_(1e-4).png" />
+
+```
+--- Training OPNet (Low LR) ---
+Starting training for OPNet (Low LR)...
+Epoch 1/10 | Loss: 0.0902 | SENS (Recall): 0.9570 | Spec: 0.9947 | Acc: 0.9758 | F1: 0.9754
+Epoch 2/10 | Loss: 0.0542 | SENS (Recall): 0.9740 | Spec: 0.9960 | Acc: 0.9850 | F1: 0.9848
+Epoch 3/10 | Loss: 0.0365 | SENS (Recall): 0.9847 | Spec: 0.9970 | Acc: 0.9908 | F1: 0.9908
+Epoch 4/10 | Loss: 0.0282 | SENS (Recall): 0.9880 | Spec: 0.9987 | Acc: 0.9933 | F1: 0.9933
+Epoch 5/10 | Loss: 0.0257 | SENS (Recall): 0.9950 | Spec: 0.9967 | Acc: 0.9958 | F1: 0.9958
+Epoch 6/10 | Loss: 0.0232 | SENS (Recall): 0.9967 | Spec: 0.9980 | Acc: 0.9973 | F1: 0.9973
+Epoch 7/10 | Loss: 0.0227 | SENS (Recall): 0.9917 | Spec: 0.9990 | Acc: 0.9953 | F1: 0.9953
+Epoch 8/10 | Loss: 0.0304 | SENS (Recall): 0.9980 | Spec: 0.9897 | Acc: 0.9938 | F1: 0.9939
+Epoch 9/10 | Loss: 0.0214 | SENS (Recall): 0.9973 | Spec: 0.9973 | Acc: 0.9973 | F1: 0.9973
+Epoch 10/10 | Loss: 0.0192 | SENS (Recall): 0.9953 | Spec: 0.9987 | Acc: 0.9970 | F1: 0.9970
+OPNet (Low LR) complete in 26m
+```
 
 *   **Experiment 2: Batch Size**
     *   **Method:** We reduced the Batch Size from 64 to 32. Smaller batches introduce more noise into the gradient estimation, which can act as a regularizer.
     *   **Result:** This was the most successful experiment for OPNet. It boosted Recall to **99.83%** and Accuracy to 99.77%, bringing the custom model within touching distance (0.07%) of the original baseline.
     *   **Conclusion:** The regularization effect of the smaller batch size helped the lightweight OPNet generalize better to unseen validation data.
  
-*   Comparison: MobileNetV2 Batch Size Impact 
+*   Comparison: MobileNetV2 Batch Size Impact
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_MobileNetV2_Small_Batch_(32).png" />
 
-*   Comparison: OPNet Batch Size Impact 
+```
+--- Training MobileNetV2 (Batch 32) ---
+Starting training for MobileNetV2 (Batch 32)...
+Epoch 1/10 | Loss: 0.0102 | SENS (Recall): 0.9957 | Spec: 0.9973 | Acc: 0.9965 | F1: 0.9965
+Epoch 2/10 | Loss: 0.0114 | SENS (Recall): 0.9990 | Spec: 0.9937 | Acc: 0.9963 | F1: 0.9963
+Epoch 3/10 | Loss: 0.0074 | SENS (Recall): 0.9980 | Spec: 0.9957 | Acc: 0.9968 | F1: 0.9968
+Epoch 4/10 | Loss: 0.0086 | SENS (Recall): 0.9967 | Spec: 0.9983 | Acc: 0.9975 | F1: 0.9975
+Epoch 5/10 | Loss: 0.0105 | SENS (Recall): 0.9990 | Spec: 0.9943 | Acc: 0.9967 | F1: 0.9967
+Epoch 6/10 | Loss: 0.0097 | SENS (Recall): 0.9987 | Spec: 0.9963 | Acc: 0.9975 | F1: 0.9975
+Epoch 7/10 | Loss: 0.0122 | SENS (Recall): 0.9953 | Spec: 0.9993 | Acc: 0.9973 | F1: 0.9973
+Epoch 8/10 | Loss: 0.0089 | SENS (Recall): 0.9973 | Spec: 0.9980 | Acc: 0.9977 | F1: 0.9977
+Epoch 9/10 | Loss: 0.0060 | SENS (Recall): 0.9967 | Spec: 0.9987 | Acc: 0.9977 | F1: 0.9977
+Epoch 10/10 | Loss: 0.0080 | SENS (Recall): 0.9973 | Spec: 0.9977 | Acc: 0.9975 | F1: 0.9975
+MobileNetV2 (Batch 32) complete in 29m
+```
+
+*   Comparison: OPNet Batch Size Impact
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_OPNet_Small_Batch_(32).png" />
 
-*   **Experiment 3: ...**
+```
+--- Training OPNet (Batch 32) ---
+Starting training for OPNet (Batch 32)...
+Epoch 1/10 | Loss: 0.0301 | SENS (Recall): 0.9873 | Spec: 0.9957 | Acc: 0.9915 | F1: 0.9915
+Epoch 2/10 | Loss: 0.0634 | SENS (Recall): 0.9963 | Spec: 0.9680 | Acc: 0.9822 | F1: 0.9824
+Epoch 3/10 | Loss: 0.0281 | SENS (Recall): 0.9833 | Spec: 0.9980 | Acc: 0.9907 | F1: 0.9906
+Epoch 4/10 | Loss: 0.0260 | SENS (Recall): 0.9853 | Spec: 0.9983 | Acc: 0.9918 | F1: 0.9918
+Epoch 5/10 | Loss: 0.0160 | SENS (Recall): 0.9920 | Spec: 0.9990 | Acc: 0.9955 | F1: 0.9955
+Epoch 6/10 | Loss: 0.0144 | SENS (Recall): 0.9950 | Spec: 0.9987 | Acc: 0.9968 | F1: 0.9968
+Epoch 7/10 | Loss: 0.0198 | SENS (Recall): 0.9967 | Spec: 0.9970 | Acc: 0.9968 | F1: 0.9968
+Epoch 8/10 | Loss: 0.0121 | SENS (Recall): 0.9973 | Spec: 0.9980 | Acc: 0.9977 | F1: 0.9977
+Epoch 9/10 | Loss: 0.0129 | SENS (Recall): 0.9983 | Spec: 0.9970 | Acc: 0.9977 | F1: 0.9977
+Epoch 10/10 | Loss: 0.0163 | SENS (Recall): 0.9983 | Spec: 0.9967 | Acc: 0.9975 | F1: 0.9975
+OPNet (Batch 32) complete in 26m
+```
+
+
+
+*   **Experiment 3: Weighted Loss (Sensitivity Boosting)**
+    *   **Method:** We applied a pos_weight of 3.0 to the Binary Cross Entropy loss function. This penalizes the model 3x more for missing a crack (False Negative) than for a false alarm, aligning the training objective with the safety-critical nature of the task.
+    *   **Result:** MobileNetV2 achieved a milestone 100.00% Recall (Sensitivity) in Epoch 7, proving it captured every single crack in the validation set, with only a minor drop in Specificity. OPNet also saw a massive boost in Recall, peaking at 99.97% (Epoch 7). However, this came with a significant trade-off: OPNet's Specificity temporarily dropped to 94.7%, indicating the lightweight model became "paranoid" and flagged non-cracks as cracks before stabilizing in later epochs.
+    *   **Conclusion:** Weighted Loss is the most effective tool for ensuring zero missed defects. However, it introduces a distinct trade-off: while safety is maximized, the model generates more False Positives (false alarms), particularly in smaller architectures like OPNet.
+  
+
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_3_weighted_loss_v2.png" />
+
 
   ```
 --- Exp 1A: MobileNetV2 (Weighted Loss) ---
-Downloading: "https://download.pytorch.org/models/mobilenet_v2-7ebf99e0.pth" to /root/.cache/torch/hub/checkpoints/mobilenet_v2-7ebf99e0.pth
-100%|██████████| 13.6M/13.6M [00:00<00:00, 85.0MB/s]
 Starting training for MobileNetV2 [WeightedLoss]...
 Epoch 1/10 | Loss: 0.0568 | Val Loss: 0.0094 | SENS: 0.9990 | Spec: 0.9980 | Acc: 0.9985
 Epoch 2/10 | Loss: 0.0298 | Val Loss: 0.0140 | SENS: 0.9990 | Spec: 0.9983 | Acc: 0.9987
@@ -459,13 +558,17 @@ Specificity: 0.9980
 Accuracy:    0.9972
 F1-Score:    0.9972
 ```
-<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_3_weighted_loss_v2.png" />
+---
+
 
 ### 10. Error Analysis (Failure Cases)
 *   **Analysis of Misclassifications:**
     *   **False Positives (Non-Cracked predicted as Cracked):**
     *   **False Negatives (Cracked predicted as Non-Cracked):**
 *   **Hypothesis:**
+
+
+---
 
 ### 11. (Bonus) Explainability Analysis
 *   **Method Used:**
