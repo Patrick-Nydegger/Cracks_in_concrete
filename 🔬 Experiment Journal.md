@@ -382,9 +382,9 @@ Estimated Total Size (MB): 50.33
     | **MobileNetV2**  | Low LR (1e-4) |  99.93%   |    99.73%  |  99.83%  |  0.9983   |
     | **OPNet**        | Low LR (1e-4) |  99.73%   |    99.73%  |  99.73%  |  0.9973   |
     | **MobileNetV2**  | Small Batch (32) |  99.90%   |    99.43%  |  99.67%  |  0.9967   |
-    | **OPNet**        | Small Batch (32) |  **99.83%**   |    99.70%  |  **99.77%**  |  **0.9977**   |
-    | **MobileNetV2**  | Weighted Loss      |           |            |          |           |
-    | **OPNet**        | Weighted Loss      |           |            |          |           |
+    | **OPNet**        | Small Batch (32) |  **99.83%**  |    99.70%  |  **99.77%**  |  **0.9977**   |
+    | **MobileNetV2**  | Weighted Loss    | 99.90%   |   99.83%   | 99.87% |  99.87%   |
+    | **OPNet**        | Weighted Loss    |  99.63%  |   99.80%   | 99.72% |  99.72%   |
 
     
 *   **Objective:**
@@ -413,6 +413,53 @@ Estimated Total Size (MB): 50.33
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_OPNet_Small_Batch_(32).png" />
 
 *   **Experiment 3: ...**
+
+  ```
+--- Exp 1A: MobileNetV2 (Weighted Loss) ---
+Downloading: "https://download.pytorch.org/models/mobilenet_v2-7ebf99e0.pth" to /root/.cache/torch/hub/checkpoints/mobilenet_v2-7ebf99e0.pth
+100%|██████████| 13.6M/13.6M [00:00<00:00, 85.0MB/s]
+Starting training for MobileNetV2 [WeightedLoss]...
+Epoch 1/10 | Loss: 0.0568 | Val Loss: 0.0094 | SENS: 0.9990 | Spec: 0.9980 | Acc: 0.9985
+Epoch 2/10 | Loss: 0.0298 | Val Loss: 0.0140 | SENS: 0.9990 | Spec: 0.9983 | Acc: 0.9987
+Epoch 3/10 | Loss: 0.0269 | Val Loss: 0.0130 | SENS: 0.9993 | Spec: 0.9940 | Acc: 0.9967
+Epoch 4/10 | Loss: 0.0210 | Val Loss: 0.0086 | SENS: 0.9993 | Spec: 0.9967 | Acc: 0.9980
+Epoch 5/10 | Loss: 0.0241 | Val Loss: 0.0076 | SENS: 0.9993 | Spec: 0.9973 | Acc: 0.9983
+Epoch 6/10 | Loss: 0.0233 | Val Loss: 0.0065 | SENS: 0.9993 | Spec: 0.9983 | Acc: 0.9988
+Epoch 7/10 | Loss: 0.0179 | Val Loss: 0.0081 | SENS: 1.0000 | Spec: 0.9960 | Acc: 0.9980
+Epoch 8/10 | Loss: 0.0202 | Val Loss: 0.0102 | SENS: 0.9997 | Spec: 0.9957 | Acc: 0.9977
+Epoch 9/10 | Loss: 0.0183 | Val Loss: 0.0078 | SENS: 0.9993 | Spec: 0.9983 | Acc: 0.9988
+Epoch 10/10 | Loss: 0.0209 | Val Loss: 0.0090 | SENS: 0.9990 | Spec: 0.9983 | Acc: 0.9987
+MobileNetV2 training complete in 28m 32s
+
+--- Exp 1B: OPNet (Weighted Loss) ---
+Starting training for OPNet [WeightedLoss]...
+Epoch 1/10 | Loss: 0.2241 | Val Loss: 0.0995 | SENS: 0.9977 | Spec: 0.9503 | Acc: 0.9740
+Epoch 2/10 | Loss: 0.1034 | Val Loss: 0.0397 | SENS: 0.9957 | Spec: 0.9933 | Acc: 0.9945
+Epoch 3/10 | Loss: 0.0829 | Val Loss: 0.0354 | SENS: 0.9950 | Spec: 0.9967 | Acc: 0.9958
+Epoch 4/10 | Loss: 0.0726 | Val Loss: 0.0424 | SENS: 0.9913 | Spec: 0.9953 | Acc: 0.9933
+Epoch 5/10 | Loss: 0.0653 | Val Loss: 0.0306 | SENS: 0.9940 | Spec: 0.9963 | Acc: 0.9952
+Epoch 6/10 | Loss: 0.0593 | Val Loss: 0.0221 | SENS: 0.9977 | Spec: 0.9953 | Acc: 0.9965
+Epoch 7/10 | Loss: 0.0636 | Val Loss: 0.0971 | SENS: 0.9997 | Spec: 0.9470 | Acc: 0.9733
+Epoch 8/10 | Loss: 0.0469 | Val Loss: 0.0312 | SENS: 0.9987 | Spec: 0.9900 | Acc: 0.9943
+Epoch 9/10 | Loss: 0.0445 | Val Loss: 0.0227 | SENS: 0.9983 | Spec: 0.9943 | Acc: 0.9963
+Epoch 10/10 | Loss: 0.0488 | Val Loss: 0.0213 | SENS: 0.9963 | Spec: 0.9980 | Acc: 0.9972
+OPNet training complete in 26m 45s
+
+--- Comparison: MobileNetV2 Weighted vs. OPNet Weighted ---
+
+--- Final Metrics (Epoch 10) for MobileNetV2 (Weighted) ---
+Sensitivity: 0.9990
+Specificity: 0.9983
+Accuracy:    0.9987
+F1-Score:    0.9987
+
+--- Final Metrics (Epoch 10) for OPNet (Weighted) ---
+Sensitivity: 0.9963
+Specificity: 0.9980
+Accuracy:    0.9972
+F1-Score:    0.9972
+```
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_3_weighted_loss_v2.png" />
 
 ### 10. Error Analysis (Failure Cases)
 *   **Analysis of Misclassifications:**
