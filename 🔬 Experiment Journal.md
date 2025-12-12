@@ -584,7 +584,10 @@ Integrated Gradients (IG): We computed the pixel-level attribution by integratin
 *   **Insights:**
 The analysis confirms that the model is trustworthy. It is not relying on background artifacts or random noise to make predictions. Instead, it has successfully learned to identify the specific morphological features of a crack—specifically the sharp contrast and continuous linear structure. The combination of Grad-CAM's shape detection and IG's edge sensitivity proves the model has learned a robust representation of structural defects.
 
+#### MobileNetV2
 
-<img width="1385" height="2000" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/XAI.png" />
+<img width="1385" height="2000" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/XAI_MobileNetV2.png" />
 
+#### OPNet
 
+<img width="1385" height="2000" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/XAI_OPNet.png" />
