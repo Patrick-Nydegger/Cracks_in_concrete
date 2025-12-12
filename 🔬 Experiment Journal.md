@@ -49,7 +49,7 @@
 - [ ] 8. Performance Analysis
 - [ ] 9. Parameter Studies & Experiments
 - [ ] 10. Error Analysis (Failure Cases)
-- [ ] 11. (Bonus) Explainability Analysis
+✅ 11. (Bonus) Explainability Analysis
 
 ---
 
@@ -567,13 +567,27 @@ F1-Score:    0.9972
     *   **False Negatives (Cracked predicted as Non-Cracked):**
 *   **Hypothesis:**
 
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-Cam_Analysis-False_Positive.png" />
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-Cam_Analysis-False_Negative.png" />
 
 ---
 
 ### 11. (Bonus) Explainability Analysis
-*   **Method Used:**
-*   **Findings:**
+*    **Method Used:**
+To validate each model's decision-making process, we applied two complementary XAI techniques to a batch of 10 "Positive" validation images.
+     * Grad-CAM (Gradient-weighted Class Activation Mapping): We visualized the activation of the final convolutional layer to identify the general regions the model focuses on.
+     * Integrated Gradients (IG): We computed the pixel-level attribution by integrating gradients along a path from a black baseline image to the input image, revealing exactly which pixels contributed most to the "Crack" prediction.
+*    **Findings:**
+     * High Confidence: The model correctly classifies all 10 samples with near-certainty (P(Crack) ≈ 1.000).
+     * Localization (Grad-CAM): The Grad-CAM heatmaps (Red/Yellow blobs) consistently follow the trajectory of the cracks. Whether the crack is vertical, diagonal, or branching, the high-activation regions align perfectly with the structural defect, though the resolution is coarse.
+     * Precision (Integrated Gradients): The IG visualization (Purple/Orange dots) is highly precise. It highlights the specific high-contrast edges and shadows within the cracks, ignoring the surrounding healthy concrete texture.
 *   **Insights:**
+The analysis confirms that the model is trustworthy. It is not relying on background artifacts or random noise to make predictions. Instead, it has successfully learned to identify the specific morphological features of a crack—specifically the sharp contrast and continuous linear structure. The combination of Grad-CAM's shape detection and IG's edge sensitivity proves the model has learned a robust representation of structural defects.
 
-<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-Cam_Analysis-False_Positive.png" />
-<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-Cam_Analysis-False_Negative.png" />
+#### MobileNetV2
+
+<img width="1385" height="2000" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/XAI_MobileNetV2.png" />
+
+#### OPNet
+
+<img width="1385" height="2000" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/XAI_OPNet.png" />
