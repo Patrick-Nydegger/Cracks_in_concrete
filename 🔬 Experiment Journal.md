@@ -276,6 +276,7 @@ Estimated Total Size (MB): 116.35
 
 ```
 
+<img width="1385" height="4000" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/MobileNetV2_Architecture.png" />
 
 
 
@@ -341,6 +342,9 @@ Estimated Total Size (MB): 50.33
 ===================================================================================================================
 
 ```
+
+<img width="1385" height="547" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/OPNet_Architecture.png" />
+
 ---
 
 ### 8. Performance Analysis
