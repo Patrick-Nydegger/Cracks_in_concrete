@@ -383,8 +383,8 @@ Estimated Total Size (MB): 50.33
     | **OPNet**        | Low LR (1e-4) |  99.73%   |    99.73%  |  99.73%  |  0.9973   |
     | **MobileNetV2**  | Small Batch (32) |  99.90%   |    99.43%  |  99.67%  |  0.9967   |
     | **OPNet**        | Small Batch (32) |  **99.83%**   |    99.70%  |  **99.77%**  |  **0.9977**   |
-    | **MobileNetV2**  |       |           |            |          |           |
-    | **OPNet**        |       |           |            |          |           |
+    | **MobileNetV2**  | Weighted Loss      |           |            |          |           |
+    | **OPNet**        | Weighted Loss      |           |            |          |           |
 
     
 *   **Objective:**
