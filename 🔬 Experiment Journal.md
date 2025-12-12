@@ -177,7 +177,7 @@ However we need to understand, that the dataset's error costs are asymmetric: a 
 This necessitates optimizing the model for high Sensitivity (Recall)—its ability to correctly identify all actual crack cases.
 
 #### 2. Strategic Outlook: Weighted BCE for Future Optimization
-To further address this asymmetric risk in future iterations or real-world deployment, we propose implementing a Weighted Binary Cross-Entropy. This technique uses a pos_weight parameter to assign a significantly higher penalty to errors involving the critical 'Positive' (crack) class. This would directly force the training process to focus on driving down the rate of dangerous False Negatives, tailoring the model's optimization even more aggressively towards the project's paramount safety objective. For this initial study, standard BCE proved sufficient to achieve high sensitivity, but Weighted BCE remains a powerful tool for fine-tuning the safety margin.
+To further address this asymmetric risk in future iterations or real-world deployment, we propose implementing a Weighted Binary Cross-Entropy. This technique uses a pos_weight parameter to assign a significantly higher penalty to errors involving the critical 'Positive' (crack) class. This would directly force the training process to focus on driving down the rate of dangerous False Negatives, tailoring the model's optimization even more aggressively towards the project's paramount safety objective. For this initial study, standard BCE proved sufficient to achieve high sensitivity, but Weighted BCE remains a powerful tool for fine-tuning the safety margin. This will be added into our the parameter studies & experiments.
 
 
 ### 6. Baseline Model Selection
