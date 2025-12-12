@@ -590,7 +590,7 @@ We performed a qualitative visual inspection of the specific images where our mo
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/MobileNetV2_FN.png" />
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/OPNet_FP.png" />
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/OPNet_FN.png" />
-<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-CAM Analysis - MobileNetV2 - FP.png" />
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-CAM Analysis MobileNetV2.png" />
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-CAM Analysis MobileNetV2 FN.png" />
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-CAM Analysis - OPNet FP.png" />
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-CAM Analysis - OPNet FN.png" />
