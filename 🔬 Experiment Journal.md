@@ -124,6 +124,8 @@ Validation =    Positive: 3000 + Negative: 3000     -> Total Validation:   6000
 Test =          Positive: 3000 + Negative: 3000     -> Total Test:         6000
 ```
 
+---
+
 ### 3. Choice of Evaluation Metrics
 We base our evaluation of key metrics on the use case. To do this, we perform a brief risk assessment.
 
@@ -141,6 +143,7 @@ We choose **Specificity** as our secondary metric. This measures the model's abi
 Further we take a look at: 
 * Accuracy
 * F1-Score
+---
 
 ### 4. Data Augmentation Strategy
 #### Necessity:
@@ -167,6 +170,8 @@ Data augmentation is essential to bridge the gap between our training data and t
 
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/visualization_of_the_on-the-fly_dataaugmentation_pipeline.png" />
 
+---
+
 
 ### 5. Choice of Loss Function
 
@@ -182,6 +187,7 @@ This necessitates optimizing the model for high Sensitivity (Recall)—its abili
 #### 2. Strategic Outlook: Weighted BCE for Future Optimization
 To further address this asymmetric risk in future iterations or real-world deployment, we propose implementing a Weighted Binary Cross-Entropy. This technique uses a pos_weight parameter to assign a significantly higher penalty to errors involving the critical 'Positive' (crack) class. This would directly force the training process to focus on driving down the rate of dangerous False Negatives, tailoring the model's optimization even more aggressively towards the project's paramount safety objective. For this initial study, standard BCE proved sufficient to achieve high sensitivity, but Weighted BCE remains a powerful tool for fine-tuning the safety margin. This will be added into our the parameter studies & experiments.
 
+---
 
 ### 6. Baseline Model Selection
 To select the most appropriate baseline for our "Drone Inspection" use case, we performed a comprehensive comparative analysis of four standard architectures. These models were evaluated based on their inherent suitability for safety-critical and resource-constrained environments.
@@ -201,15 +207,141 @@ Our choice is driven by the specific constraints of our **Drone Inspection Use C
 2.  **High Suitability for Edge Deployment:** Our goal is real-time or near-real-time processing on the device. MobileNetV2's low latency makes it the superior candidate for running directly on the drone's embedded hardware (e.g., Raspberry Pi or Nvidia Jetson).
 
 
-### 7. Custom Model Design
-*   **Architecture Overview:**
-    *   Number of convolutional layers:
-    *   Activation functions used:
-    *   Pooling layers:
-    *   Regularization:
-    *   Classifier head:
-*   **Design Justification:**
 
+
+#### Architecture
+
+```
+=============================================================================================================================
+Layer (type:depth-idx)                             Input Shape               Output Shape              Param #
+=============================================================================================================================
+MobileNetV2                                        [1, 3, 224, 224]          [1, 1]                    --
+├─Sequential: 1-1                                  [1, 3, 224, 224]          [1, 1280, 7, 7]           --
+│    └─Conv2dNormActivation: 2-1                   [1, 3, 224, 224]          [1, 32, 112, 112]         --
+│    │    └─Conv2d: 3-1                            [1, 3, 224, 224]          [1, 32, 112, 112]         864
+│    │    └─BatchNorm2d: 3-2                       [1, 32, 112, 112]         [1, 32, 112, 112]         64
+│    │    └─ReLU6: 3-3                             [1, 32, 112, 112]         [1, 32, 112, 112]         --
+│    └─InvertedResidual: 2-2                       [1, 32, 112, 112]         [1, 16, 112, 112]         --
+│    │    └─Sequential: 3-4                        [1, 32, 112, 112]         [1, 16, 112, 112]         896
+│    └─InvertedResidual: 2-3                       [1, 16, 112, 112]         [1, 24, 56, 56]           --
+│    │    └─Sequential: 3-5                        [1, 16, 112, 112]         [1, 24, 56, 56]           5,136
+│    └─InvertedResidual: 2-4                       [1, 24, 56, 56]           [1, 24, 56, 56]           --
+│    │    └─Sequential: 3-6                        [1, 24, 56, 56]           [1, 24, 56, 56]           8,832
+│    └─InvertedResidual: 2-5                       [1, 24, 56, 56]           [1, 32, 28, 28]           --
+│    │    └─Sequential: 3-7                        [1, 24, 56, 56]           [1, 32, 28, 28]           10,000
+│    └─InvertedResidual: 2-6                       [1, 32, 28, 28]           [1, 32, 28, 28]           --
+│    │    └─Sequential: 3-8                        [1, 32, 28, 28]           [1, 32, 28, 28]           14,848
+│    └─InvertedResidual: 2-7                       [1, 32, 28, 28]           [1, 32, 28, 28]           --
+│    │    └─Sequential: 3-9                        [1, 32, 28, 28]           [1, 32, 28, 28]           14,848
+│    └─InvertedResidual: 2-8                       [1, 32, 28, 28]           [1, 64, 14, 14]           --
+│    │    └─Sequential: 3-10                       [1, 32, 28, 28]           [1, 64, 14, 14]           21,056
+│    └─InvertedResidual: 2-9                       [1, 64, 14, 14]           [1, 64, 14, 14]           --
+│    │    └─Sequential: 3-11                       [1, 64, 14, 14]           [1, 64, 14, 14]           54,272
+│    └─InvertedResidual: 2-10                      [1, 64, 14, 14]           [1, 64, 14, 14]           --
+│    │    └─Sequential: 3-12                       [1, 64, 14, 14]           [1, 64, 14, 14]           54,272
+│    └─InvertedResidual: 2-11                      [1, 64, 14, 14]           [1, 64, 14, 14]           --
+│    │    └─Sequential: 3-13                       [1, 64, 14, 14]           [1, 64, 14, 14]           54,272
+│    └─InvertedResidual: 2-12                      [1, 64, 14, 14]           [1, 96, 14, 14]           --
+│    │    └─Sequential: 3-14                       [1, 64, 14, 14]           [1, 96, 14, 14]           66,624
+│    └─InvertedResidual: 2-13                      [1, 96, 14, 14]           [1, 96, 14, 14]           --
+│    │    └─Sequential: 3-15                       [1, 96, 14, 14]           [1, 96, 14, 14]           118,272
+│    └─InvertedResidual: 2-14                      [1, 96, 14, 14]           [1, 96, 14, 14]           --
+│    │    └─Sequential: 3-16                       [1, 96, 14, 14]           [1, 96, 14, 14]           118,272
+│    └─InvertedResidual: 2-15                      [1, 96, 14, 14]           [1, 160, 7, 7]            --
+│    │    └─Sequential: 3-17                       [1, 96, 14, 14]           [1, 160, 7, 7]            155,264
+│    └─InvertedResidual: 2-16                      [1, 160, 7, 7]            [1, 160, 7, 7]            --
+│    │    └─Sequential: 3-18                       [1, 160, 7, 7]            [1, 160, 7, 7]            320,000
+│    └─InvertedResidual: 2-17                      [1, 160, 7, 7]            [1, 160, 7, 7]            --
+│    │    └─Sequential: 3-19                       [1, 160, 7, 7]            [1, 160, 7, 7]            320,000
+│    └─InvertedResidual: 2-18                      [1, 160, 7, 7]            [1, 320, 7, 7]            --
+│    │    └─Sequential: 3-20                       [1, 160, 7, 7]            [1, 320, 7, 7]            473,920
+│    └─Conv2dNormActivation: 2-19                  [1, 320, 7, 7]            [1, 1280, 7, 7]           --
+│    │    └─Conv2d: 3-21                           [1, 320, 7, 7]            [1, 1280, 7, 7]           409,600
+│    │    └─BatchNorm2d: 3-22                      [1, 1280, 7, 7]           [1, 1280, 7, 7]           2,560
+│    │    └─ReLU6: 3-23                            [1, 1280, 7, 7]           [1, 1280, 7, 7]           --
+├─Sequential: 1-2                                  [1, 1280]                 [1, 1]                    --
+│    └─Dropout: 2-20                               [1, 1280]                 [1, 1280]                 --
+│    └─Linear: 2-21                                [1, 1280]                 [1, 1]                    1,281
+=============================================================================================================================
+Total params: 2,225,153
+Trainable params: 2,225,153
+Non-trainable params: 0
+Total mult-adds (Units.MEGABYTES): 299.53
+=============================================================================================================================
+Input size (MB): 0.60
+Forward/backward pass size (MB): 106.85
+Params size (MB): 8.90
+Estimated Total Size (MB): 116.35
+=============================================================================================================================
+
+```
+
+
+
+
+
+---
+
+
+
+### 7. Custom Model Design
+
+#### Architecture Overview:
+- **Number of convolutional layers:** The network consists of 4 sequential convolutional blocks. The depth of the feature maps increases progressively through the network (32 → → 64 → → 128 → → 256 channels).
+- **Activation functions used:** ReLU (Rectified Linear Unit) is used as the non-linear activation function after every Batch Normalization layer.
+- **Pooling layers:** Spatial dimension reduction is handled by MaxPool2d (2x2 kernel) within each convolutional block. The feature extraction phase ends with Global Average Pooling (AdaptiveAvgPool2d), which condenses the final 14x14 feature maps into a 1x1 vector.
+- **Regularization:** The model employs Batch Normalization (BatchNorm2d) after every convolution to stabilize training. Additionally, Dropout with a probability of 0.5 is applied immediately before the final classification layer to prevent overfitting.
+- **Classifier head:** A minimalist design using a single Linear layer (256 input features → → 1 output feature) that produces the final binary logit.
+
+#### Design Justification:
+The OPNet architecture is explicitly designed for high efficiency and deployment on resource-constrained edge devices (e.g., drones). By utilizing a Global Average Pooling layer instead of flattening the feature maps into massive fully connected layers, the model drastically reduces its parameter count to approximately 390,000. This makes it roughly 9x smaller than the MobileNetV2 baseline.
+The structure follows a classic VGG-style hierarchy—learning simple edges in early layers (32 filters) and complex textures in deeper layers (256 filters)—but removes all unnecessary architectural overhead. The inclusion of Batch Normalization ensures that despite its simplicity, the model converges quickly, while the heavy use of Dropout ensures robust generalization on the binary crack detection task.
+
+#### Architecture
+
+```
+===================================================================================================================
+Layer (type:depth-idx)                   Input Shape               Output Shape              Param #
+===================================================================================================================
+OPNet                                    [1, 3, 224, 224]          [1, 1]                    --
+├─Sequential: 1-1                        [1, 3, 224, 224]          [1, 32, 112, 112]         --
+│    └─Conv2d: 2-1                       [1, 3, 224, 224]          [1, 32, 224, 224]         896
+│    └─BatchNorm2d: 2-2                  [1, 32, 224, 224]         [1, 32, 224, 224]         64
+│    └─ReLU: 2-3                         [1, 32, 224, 224]         [1, 32, 224, 224]         --
+│    └─MaxPool2d: 2-4                    [1, 32, 224, 224]         [1, 32, 112, 112]         --
+├─Sequential: 1-2                        [1, 32, 112, 112]         [1, 64, 56, 56]           --
+│    └─Conv2d: 2-5                       [1, 32, 112, 112]         [1, 64, 112, 112]         18,496
+│    └─BatchNorm2d: 2-6                  [1, 64, 112, 112]         [1, 64, 112, 112]         128
+│    └─ReLU: 2-7                         [1, 64, 112, 112]         [1, 64, 112, 112]         --
+│    └─MaxPool2d: 2-8                    [1, 64, 112, 112]         [1, 64, 56, 56]           --
+├─Sequential: 1-3                        [1, 64, 56, 56]           [1, 128, 28, 28]          --
+│    └─Conv2d: 2-9                       [1, 64, 56, 56]           [1, 128, 56, 56]          73,856
+│    └─BatchNorm2d: 2-10                 [1, 128, 56, 56]          [1, 128, 56, 56]          256
+│    └─ReLU: 2-11                        [1, 128, 56, 56]          [1, 128, 56, 56]          --
+│    └─MaxPool2d: 2-12                   [1, 128, 56, 56]          [1, 128, 28, 28]          --
+├─Sequential: 1-4                        [1, 128, 28, 28]          [1, 256, 14, 14]          --
+│    └─Conv2d: 2-13                      [1, 128, 28, 28]          [1, 256, 28, 28]          295,168
+│    └─BatchNorm2d: 2-14                 [1, 256, 28, 28]          [1, 256, 28, 28]          512
+│    └─ReLU: 2-15                        [1, 256, 28, 28]          [1, 256, 28, 28]          --
+│    └─MaxPool2d: 2-16                   [1, 256, 28, 28]          [1, 256, 14, 14]          --
+├─AdaptiveAvgPool2d: 1-5                 [1, 256, 14, 14]          [1, 256, 1, 1]            --
+├─Sequential: 1-6                        [1, 256]                  [1, 1]                    --
+│    └─Dropout: 2-17                     [1, 256]                  [1, 256]                  --
+│    └─Linear: 2-18                      [1, 256]                  [1, 1]                    257
+===================================================================================================================
+Total params: 389,633
+Trainable params: 389,633
+Non-trainable params: 0
+Total mult-adds (Units.MEGABYTES): 740.00
+===================================================================================================================
+Input size (MB): 0.60
+Forward/backward pass size (MB): 48.17
+Params size (MB): 1.56
+Estimated Total Size (MB): 50.33
+===================================================================================================================
+
+```
+---
 
 ### 8. Performance Analysis
 *   **Comparison Table:**
