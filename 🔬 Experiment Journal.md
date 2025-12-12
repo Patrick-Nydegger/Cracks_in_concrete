@@ -43,6 +43,7 @@
 ✅ 5. Choice of Loss Function
 
 ✅ 6. Baseline Model Selection
+
 - [ ] 7. Custom Model Design
 - [ ] 8. Performance Analysis
 - [ ] 9. Parameter Studies & Experiments
@@ -72,7 +73,9 @@ Negative: Images of concrete surfaces without any cracks.
 **Potential Challenges:** Some 'Negative' samples contain features like shadows, stains, or joints in the concrete that could visually mimic cracks. This ambiguity is expected to be the primary challenge for our classification model.
 
 
-<img width="1107" height="575" alt="image" src="https://github.com/user-attachments/assets/33d32723-cd46-436f-92cc-4e04301753ad" />
+<img width="1107" height="575" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/sample_images_from_the_dataset.png
+" />
+
 
 
 #### Our analysis confirms that the dataset consists of exactly 20,000 images for the 'Positive' class and 20,000 images for the 'Negative' class.
@@ -85,7 +88,7 @@ There is a lower risk of the model developing a bias towards a majority class, w
 Since the dataset is well-balanced, accuracy can reliably be used as a performance metric.
 We do not need to employ complex techniques to handle class imbalance, such as oversampling or undersampling.
  
-<img width="713" height="547" alt="image" src="https://github.com/user-attachments/assets/54126223-27e3-4544-85d2-3be8ece9761f" />
+<img width="713" height="547" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/class_distribution_of_concrete_images.png" />
 
 
 
@@ -162,7 +165,7 @@ Data augmentation is essential to bridge the gap between our training data and t
 
 
 
-<img width="1385" height="955" alt="image" src="https://github.com/user-attachments/assets/4235fed6-927a-4805-b95b-4ac8d9616278" />
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/visualization_of_the_on-the-fly_dataaugmentation_pipeline.png" />
 
 
 ### 5. Choice of Loss Function
@@ -251,3 +254,6 @@ Our choice is driven by the specific constraints of our **Drone Inspection Use C
 *   **Method Used:**
 *   **Findings:**
 *   **Insights:**
+
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-Cam_Analysis-False_Positive.png" />
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-Cam_Analysis-False_Negative.png" />
