@@ -201,6 +201,14 @@ To select the most appropriate baseline for our "Drone Inspection" use case, we 
 
 We have chosen **MobileNetV2** as our primary baseline model.
 
+#### Architecture Overview:
+- Number of convolutional layers: The architecture has an initial convolutional layer followed by 7 groups of Inverted Residual Bottleneck blocks. The feature map depth expands significantly, reaching 1280 channels in the final feature extraction layer.
+- Activation functions used: ReLU6 is used throughout the network. This is a variation of ReLU capped at 6, specifically designed to remain robust when used with low-precision arithmetic on mobile devices.
+- Pooling layers: The network utilizes Global Average Pooling to reduce the final spatial dimensions from 7x7 down to a 1x1 feature vector before classification.
+- Regularization: Batch Normalization is applied after every internal convolution. A Dropout layer is included in the classifier block to prevent overfitting during the fine-tuning process.
+- Classifier head: The original ImageNet classifier (1000 classes) was replaced with a single Linear layer (1280 input features → → 1 output feature) for binary classification.
+ 
+ #### Design Justification:
 Our choice is driven by the specific constraints of our **Drone Inspection Use Case**:
 
 1.  **Efficiency is Key (Priority 2):** A drone has limited battery life and computational power. MobileNetV2 is explicitly designed for such environments. It uses **Depthwise Separable Convolutions**, which drastically reduce the number of parameters (~3.5 Million vs ~11 Million for ResNet-18) and computational cost (FLOPs) without a significant drop in accuracy for visual tasks like crack detection.
@@ -295,7 +303,7 @@ Estimated Total Size (MB): 116.35
 - **Classifier head:** A minimalist design using a single Linear layer (256 input features → → 1 output feature) that produces the final binary logit.
 
 #### Design Justification:
-The OPNet architecture is explicitly designed for high efficiency and deployment on resource-constrained edge devices (e.g., drones). By utilizing a Global Average Pooling layer instead of flattening the feature maps into massive fully connected layers, the model drastically reduces its parameter count to approximately 390,000. This makes it roughly 9x smaller than the MobileNetV2 baseline.
+Our OPNet architecture is explicitly designed for high efficiency and deployment on resource-constrained edge devices (e.g., drones). By utilizing a Global Average Pooling layer instead of flattening the feature maps into massive fully connected layers, the model drastically reduces its parameter count to approximately 390,000. This makes it roughly 9x smaller than the MobileNetV2 baseline.
 The structure follows a classic VGG-style hierarchy—learning simple edges in early layers (32 filters) and complex textures in deeper layers (256 filters)—but removes all unnecessary architectural overhead. The inclusion of Batch Normalization ensures that despite its simplicity, the model converges quickly, while the heavy use of Dropout ensures robust generalization on the binary crack detection task.
 
 #### Architecture
