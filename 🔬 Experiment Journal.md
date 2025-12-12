@@ -364,6 +364,7 @@ Estimated Total Size (MB): 50.33
     | **OPNet**         |  99.63%   |   99.83%   |   99.73% |   0.9973  |
 
 *   **Training Curves:**
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/baseline_training-performance.png" />  
 ```
 Created model save directory: /content/drive/MyDrive/models
 Starting training for MobileNetV2...
@@ -390,8 +391,7 @@ Epoch 8/10 | Loss: 0.0141 | SENS (Recall): 0.9937 | Spec: 0.9993 | Acc: 0.9965 |
 Epoch 9/10 | Loss: 0.0121 | SENS (Recall): 0.9967 | Spec: 0.9977 | Acc: 0.9972 | F1: 0.9972
 Epoch 10/10 | Loss: 0.0146 | SENS (Recall): 0.9980 | Spec: 0.9963 | Acc: 0.9972 | F1: 0.9972
 OPNet complete in 27m
-```
-<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/baseline_training-performance.png" />    
+```  
   
 *   **Interpretation:**
     *   **Baseline Superiority:** MobileNetV2 demonstrates state-of-the-art performance, achieving nearly perfect recall (99.90%) very early in training (Epoch 6). This validates the effectiveness of transfer learning from ImageNet features for texture-based tasks like crack detection.
@@ -423,6 +423,7 @@ OPNet complete in 27m
     *   **Conclusion:** Lower Learning Rate is beneficial for maximizing sensitivity in both architectures.
 
 *   Comparison: MobileNetV2 LR Impact
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_MobileNetV2_Low_LR_(1e-4).png" />
 ```
 --- Training MobileNetV2 (Low LR) ---
 Starting training for MobileNetV2 (Low LR)...
@@ -438,9 +439,9 @@ Epoch 9/10 | Loss: 0.0050 | SENS (Recall): 0.9993 | Spec: 0.9973 | Acc: 0.9983 |
 Epoch 10/10 | Loss: 0.0050 | SENS (Recall): 0.9990 | Spec: 0.9977 | Acc: 0.9983 | F1: 0.9983
 MobileNetV2 (Low LR) complete in 28m
 ```
-<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_MobileNetV2_Low_LR_(1e-4).png" />
 
 *   Comparison: OPNet LR Impact
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_OPNet_Low_LR_(1e-4).png" />
 ```
 --- Training OPNet (Low LR) ---
 Starting training for OPNet (Low LR)...
@@ -456,7 +457,6 @@ Epoch 9/10 | Loss: 0.0214 | SENS (Recall): 0.9973 | Spec: 0.9973 | Acc: 0.9973 |
 Epoch 10/10 | Loss: 0.0192 | SENS (Recall): 0.9953 | Spec: 0.9987 | Acc: 0.9970 | F1: 0.9970
 OPNet (Low LR) complete in 26m
 ```
-<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_OPNet_Low_LR_(1e-4).png" />
 
 *   **Experiment 2: Batch Size**
     *   **Method:** We reduced the Batch Size from 64 to 32. Smaller batches introduce more noise into the gradient estimation, which can act as a regularizer.
@@ -464,6 +464,7 @@ OPNet (Low LR) complete in 26m
     *   **Conclusion:** The regularization effect of the smaller batch size helped the lightweight OPNet generalize better to unseen validation data.
  
 *   Comparison: MobileNetV2 Batch Size Impact
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_MobileNetV2_Small_Batch_(32).png" />
 ```
 --- Training MobileNetV2 (Batch 32) ---
 Starting training for MobileNetV2 (Batch 32)...
@@ -479,9 +480,9 @@ Epoch 9/10 | Loss: 0.0060 | SENS (Recall): 0.9967 | Spec: 0.9987 | Acc: 0.9977 |
 Epoch 10/10 | Loss: 0.0080 | SENS (Recall): 0.9973 | Spec: 0.9977 | Acc: 0.9975 | F1: 0.9975
 MobileNetV2 (Batch 32) complete in 29m
 ```
-<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_MobileNetV2_Small_Batch_(32).png" />
 
 *   Comparison: OPNet Batch Size Impact
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_OPNet_Small_Batch_(32).png" />
 ```
 --- Training OPNet (Batch 32) ---
 Starting training for OPNet (Batch 32)...
@@ -497,7 +498,7 @@ Epoch 9/10 | Loss: 0.0129 | SENS (Recall): 0.9983 | Spec: 0.9970 | Acc: 0.9977 |
 Epoch 10/10 | Loss: 0.0163 | SENS (Recall): 0.9983 | Spec: 0.9967 | Acc: 0.9975 | F1: 0.9975
 OPNet (Batch 32) complete in 26m
 ```
-<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_OPNet_Small_Batch_(32).png" />
+
 
 
 *   **Experiment 3: Weighted Loss (Sensitivity Boosting)**
