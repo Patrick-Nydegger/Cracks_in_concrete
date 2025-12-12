@@ -412,12 +412,18 @@ Estimated Total Size (MB): 50.33
 *   Comparison: OPNet Batch Size Impact 
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_OPNet_Small_Batch_(32).png" />
 
-*   **Experiment 3: ...**
+
+*   **Experiment 3: Weighted Loss (Sensitivity Boosting)**
+    *   **Method:** We applied a pos_weight of 3.0 to the Binary Cross Entropy loss function. This penalizes the model 3x more for missing a crack (False Negative) than for a false alarm, aligning the training objective with the safety-critical nature of the task.
+    *   **Result:** MobileNetV2 achieved a milestone 100.00% Recall (Sensitivity) in Epoch 7, proving it captured every single crack in the validation set, with only a minor drop in Specificity. OPNet also saw a massive boost in Recall, peaking at 99.97% (Epoch 7). However, this came with a significant trade-off: OPNet's Specificity temporarily dropped to 94.7%, indicating the lightweight model became "paranoid" and flagged non-cracks as cracks before stabilizing in later epochs.
+    *   **Conclusion:** Weighted Loss is the most effective tool for ensuring zero missed defects. However, it introduces a distinct trade-off: while safety is maximized, the model generates more False Positives (false alarms), particularly in smaller architectures like OPNet.
+  
+
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_3_weighted_loss_v2.png" />
+
 
   ```
 --- Exp 1A: MobileNetV2 (Weighted Loss) ---
-Downloading: "https://download.pytorch.org/models/mobilenet_v2-7ebf99e0.pth" to /root/.cache/torch/hub/checkpoints/mobilenet_v2-7ebf99e0.pth
-100%|██████████| 13.6M/13.6M [00:00<00:00, 85.0MB/s]
 Starting training for MobileNetV2 [WeightedLoss]...
 Epoch 1/10 | Loss: 0.0568 | Val Loss: 0.0094 | SENS: 0.9990 | Spec: 0.9980 | Acc: 0.9985
 Epoch 2/10 | Loss: 0.0298 | Val Loss: 0.0140 | SENS: 0.9990 | Spec: 0.9983 | Acc: 0.9987
@@ -459,13 +465,17 @@ Specificity: 0.9980
 Accuracy:    0.9972
 F1-Score:    0.9972
 ```
-<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_3_weighted_loss_v2.png" />
+---
+
 
 ### 10. Error Analysis (Failure Cases)
 *   **Analysis of Misclassifications:**
     *   **False Positives (Non-Cracked predicted as Cracked):**
     *   **False Negatives (Cracked predicted as Non-Cracked):**
 *   **Hypothesis:**
+
+
+---
 
 ### 11. (Bonus) Explainability Analysis
 *   **Method Used:**
