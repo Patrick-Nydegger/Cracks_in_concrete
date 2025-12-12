@@ -44,7 +44,8 @@
 
 ✅ 6. Baseline Model Selection
 
-- [ ] 7. Custom Model Design
+✅ 7. Custom Model Design
+
 - [ ] 8. Performance Analysis
 - [ ] 9. Parameter Studies & Experiments
 - [ ] 10. Error Analysis (Failure Cases)
@@ -73,8 +74,7 @@ Negative: Images of concrete surfaces without any cracks.
 **Potential Challenges:** Some 'Negative' samples contain features like shadows, stains, or joints in the concrete that could visually mimic cracks. This ambiguity is expected to be the primary challenge for our classification model.
 
 
-<img width="1107" height="575" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/sample_images_from_the_dataset.png
-" />
+<img width="1107" height="575" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/sample_images_from_the_dataset.png" />
 
 
 
