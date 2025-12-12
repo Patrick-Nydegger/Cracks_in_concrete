@@ -364,6 +364,33 @@ Estimated Total Size (MB): 50.33
     | **OPNet**         |  99.63%   |   99.83%   |   99.73% |   0.9973  |
 
 *   **Training Curves:**
+```
+Created model save directory: /content/drive/MyDrive/models
+Starting training for MobileNetV2...
+Epoch 1/10 | Loss: 0.0085 | SENS (Recall): 0.9990 | Spec: 0.9947 | Acc: 0.9968 | F1: 0.9968
+Epoch 2/10 | Loss: 0.0075 | SENS (Recall): 0.9983 | Spec: 0.9973 | Acc: 0.9978 | F1: 0.9978
+Epoch 3/10 | Loss: 0.0069 | SENS (Recall): 0.9973 | Spec: 0.9980 | Acc: 0.9977 | F1: 0.9977
+Epoch 4/10 | Loss: 0.0081 | SENS (Recall): 0.9977 | Spec: 0.9970 | Acc: 0.9973 | F1: 0.9973
+Epoch 5/10 | Loss: 0.0071 | SENS (Recall): 0.9977 | Spec: 0.9973 | Acc: 0.9975 | F1: 0.9975
+Epoch 6/10 | Loss: 0.0047 | SENS (Recall): 0.9977 | Spec: 0.9987 | Acc: 0.9982 | F1: 0.9982
+Epoch 7/10 | Loss: 0.0060 | SENS (Recall): 0.9983 | Spec: 0.9973 | Acc: 0.9978 | F1: 0.9978
+Epoch 8/10 | Loss: 0.0073 | SENS (Recall): 0.9973 | Spec: 0.9980 | Acc: 0.9977 | F1: 0.9977
+Epoch 9/10 | Loss: 0.0085 | SENS (Recall): 0.9987 | Spec: 0.9963 | Acc: 0.9975 | F1: 0.9975
+Epoch 10/10 | Loss: 0.0068 | SENS (Recall): 0.9967 | Spec: 0.9983 | Acc: 0.9975 | F1: 0.9975
+MobileNetV2 complete in 29m
+Starting training for OPNet...
+Epoch 1/10 | Loss: 0.0371 | SENS (Recall): 0.9780 | Spec: 0.9983 | Acc: 0.9882 | F1: 0.9880
+Epoch 2/10 | Loss: 0.0288 | SENS (Recall): 0.9887 | Spec: 0.9990 | Acc: 0.9938 | F1: 0.9938
+Epoch 3/10 | Loss: 0.0399 | SENS (Recall): 0.9757 | Spec: 0.9973 | Acc: 0.9865 | F1: 0.9864
+Epoch 4/10 | Loss: 0.0168 | SENS (Recall): 0.9960 | Spec: 0.9970 | Acc: 0.9965 | F1: 0.9965
+Epoch 5/10 | Loss: 0.0163 | SENS (Recall): 0.9977 | Spec: 0.9970 | Acc: 0.9973 | F1: 0.9973
+Epoch 6/10 | Loss: 0.0155 | SENS (Recall): 0.9950 | Spec: 0.9990 | Acc: 0.9970 | F1: 0.9970
+Epoch 7/10 | Loss: 0.0405 | SENS (Recall): 0.9987 | Spec: 0.9833 | Acc: 0.9910 | F1: 0.9911
+Epoch 8/10 | Loss: 0.0141 | SENS (Recall): 0.9937 | Spec: 0.9993 | Acc: 0.9965 | F1: 0.9965
+Epoch 9/10 | Loss: 0.0121 | SENS (Recall): 0.9967 | Spec: 0.9977 | Acc: 0.9972 | F1: 0.9972
+Epoch 10/10 | Loss: 0.0146 | SENS (Recall): 0.9980 | Spec: 0.9963 | Acc: 0.9972 | F1: 0.9972
+OPNet complete in 27m
+```
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/baseline_training-performance.png" />    
   
 *   **Interpretation:**
