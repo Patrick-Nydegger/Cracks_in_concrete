@@ -364,7 +364,8 @@ Estimated Total Size (MB): 50.33
     | **OPNet**         |  99.63%   |   99.83%   |   99.73% |   0.9973  |
 
 *   **Training Curves:**
-<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/baseline_training-performance.png" />  
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/baseline_training-performance.png" />
+
 ```
 Created model save directory: /content/drive/MyDrive/models
 Starting training for MobileNetV2...
@@ -424,6 +425,7 @@ OPNet complete in 27m
 
 *   Comparison: MobileNetV2 LR Impact
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_MobileNetV2_Low_LR_(1e-4).png" />
+
 ```
 --- Training MobileNetV2 (Low LR) ---
 Starting training for MobileNetV2 (Low LR)...
@@ -442,6 +444,7 @@ MobileNetV2 (Low LR) complete in 28m
 
 *   Comparison: OPNet LR Impact
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_OPNet_Low_LR_(1e-4).png" />
+
 ```
 --- Training OPNet (Low LR) ---
 Starting training for OPNet (Low LR)...
@@ -465,6 +468,7 @@ OPNet (Low LR) complete in 26m
  
 *   Comparison: MobileNetV2 Batch Size Impact
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_MobileNetV2_Small_Batch_(32).png" />
+
 ```
 --- Training MobileNetV2 (Batch 32) ---
 Starting training for MobileNetV2 (Batch 32)...
@@ -483,6 +487,7 @@ MobileNetV2 (Batch 32) complete in 29m
 
 *   Comparison: OPNet Batch Size Impact
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/experiment_OPNet_Small_Batch_(32).png" />
+
 ```
 --- Training OPNet (Batch 32) ---
 Starting training for OPNet (Batch 32)...
