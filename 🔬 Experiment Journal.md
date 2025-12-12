@@ -212,8 +212,8 @@ Our choice is driven by the specific constraints of our **Drone Inspection Use C
 
     | Model             | Recall    | Specificity  | Accuracy | F1-Score  |
     |-------------------|-----------|------------|----------|-----------|
-    | **MobileNetV2**   |           |            |          |           |
-    | **OPNet**         |           |            |          |           |
+    | **MobileNetV2**   |  99.90%         |   99.83%         |   99.87%       |   0.9987        |
+    | **OPNet**         |  99.63%         |   99.83%         |   99.73%       |   0.9973        |
 
 *   **Training Curves:**
   
@@ -224,8 +224,8 @@ Our choice is driven by the specific constraints of our **Drone Inspection Use C
 
     | Model            |  Experiment   | Recall    | Specificity  | Accuracy | F1-Score  |
     |------------------|---------------|-----------|------------|----------|-----------|
-    | **MobileNetV2**  | Baseline      |           |            |          |           |
-    | **OPNet**        | Baseline      |           |            |          |           |
+    | **MobileNetV2**  | Baseline      |  99.90%         |    99.83%        |  99.87%        |  0.9987         |
+    | **OPNet**        | Baseline      |  99.63%         |    99.83%        |  99.73%        |  0.9973         |
     | **MobileNetV2**  | 1 desc.       |           |            |          |           |
     | **OPNet**        | 1 desc.       |           |            |          |           |
     | **MobileNetV2**  | 2 desc.       |           |            |          |           |
