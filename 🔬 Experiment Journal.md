@@ -46,9 +46,12 @@
 
 ✅ 7. Custom Model Design
 
-- [ ] 8. Performance Analysis
-- [ ] 9. Parameter Studies & Experiments
-- [ ] 10. Error Analysis (Failure Cases)
+✅ 8. Performance Analysis
+
+✅ 9. Parameter Studies & Experiments
+
+✅ 10. Error Analysis (Failure Cases)
+
 ✅ 11. (Bonus) Explainability Analysis
 
 ---
@@ -562,13 +565,35 @@ F1-Score:    0.9972
 
 
 ### 10. Error Analysis (Failure Cases)
+Das ist eine sehr professionelle Aufbereitung. Ich habe den Text basierend auf deinen **tatsächlichen Bildern** (die du oben gezeigt hast) präzisiert.
+
+**Wichtige Korrektur:** In deinem Entwurf für Punkt 11 erwähnst du "Integrated Gradients". Da wir im Code aber **nur Grad-CAM** implementiert haben, habe ich den Text angepasst, damit er faktisch korrekt bleibt (sonst gibt es Punktabzug für "Halluzinieren" von Methoden).
+
+Hier ist der finale Text für dein Journal:
+
+---
+
+### 10. Error Analysis (Failure Cases)
+We performed a qualitative visual inspection of the specific images where our models failed.
+
 *   **Analysis of Misclassifications:**
     *   **False Positives (Non-Cracked predicted as Cracked):**
+        *   **Observation:** As seen in the "Raw" images (Error 1 & 2 for MobileNetV2, Error 2 for OPNet), the model struggles with **linear artifacts**. Specifically, images containing thin debris (like a hair or wire lying on the concrete) or distinct scratches are misclassified.
+        *   **Reasoning:** These objects share the primary morphological feature of a crack: they are dark, continuous, thin lines against a lighter background. The model has learned "Line = Crack" but lacks the semantic understanding to distinguish a "hair" from a "structural fissure."
     *   **False Negatives (Cracked predicted as Non-Cracked):**
-*   **Hypothesis:**
+        *   **Observation:** Missed cracks (e.g., OPNet Error 1 & 3) are often characterized by **low contrast** or **unusual texture**. Some images show cracks that are very faint or blurred, blending into the rough concrete texture.
+        *   **Reasoning:** The feature extraction layers failed to separate the faint crack signal from the high-frequency noise of the concrete surface. In some cases, the crack might simply be too thin for the resolution after pooling layers.
 
-<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-Cam_Analysis-False_Positive.png" />
-<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-Cam_Analysis-False_Negative.png" />
+*   **Hypothesis:** The models are highly sensitive to edge features. They fail when "noise" (debris) mimics these edges too perfectly (FP) or when the edges are washed out by texture (FN).
+
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/MobileNetV2_FP.png" />
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/MobileNetV2_FN.png" />
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/OPNet_FP.png" />
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/OPNet_FN.png" />
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-CAM Analysis - MobileNetV2 - FP.png" />
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-CAM Analysis MobileNetV2 FN.png" />
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-CAM Analysis - OPNet FP.png" />
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/Grad-CAM Analysis - OPNet FN.png" />
 
 ---
 
