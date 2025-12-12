@@ -220,7 +220,7 @@ Our choice is driven by the specific constraints of our **Drone Inspection Use C
     | **OPNet**         |  99.63%   |   99.83%   |   99.73% |   0.9973  |
 
 *   **Training Curves:**
-    media/baseline_training-performance.png
+<img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/baseline_training-performance.png" />    
   
 *   **Interpretation:**
     *   **Baseline Superiority:** MobileNetV2 demonstrates state-of-the-art performance, achieving nearly perfect recall (99.90%) very early in training (Epoch 6). This validates the effectiveness of transfer learning from ImageNet features for texture-based tasks like crack detection.
