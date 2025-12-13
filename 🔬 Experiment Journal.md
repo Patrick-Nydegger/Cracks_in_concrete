@@ -214,7 +214,7 @@ We have chosen **MobileNetV2** as our primary baseline model.
  #### Design Justification:
 Our choice is driven by the specific constraints of our **Drone Inspection Use Case**:
 
-1.  **Efficiency is Key (Priority 2):** A drone has limited battery life and computational power. MobileNetV2 is explicitly designed for such environments. It uses **Depthwise Separable Convolutions**, which drastically reduce the number of parameters (~3.5 Million vs ~11 Million for ResNet-18) and computational cost (FLOPs) without a significant drop in accuracy for visual tasks like crack detection.
+1.  **Efficiency is Key:** A drone has limited battery life and computational power. MobileNetV2 is explicitly designed for such environments. It uses **Depthwise Separable Convolutions**, which drastically reduce the number of parameters (~3.5 Million vs ~11 Million for ResNet-18) and computational cost (FLOPs) without a significant drop in accuracy for visual tasks like crack detection.
 2.  **High Suitability for Edge Deployment:** Our goal is real-time or near-real-time processing on the device. MobileNetV2's low latency makes it the superior candidate for running directly on the drone's embedded hardware (e.g., Raspberry Pi or Nvidia Jetson).
 
 
