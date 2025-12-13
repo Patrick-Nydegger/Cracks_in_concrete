@@ -361,10 +361,10 @@ Estimated Total Size (MB): 50.33
 ### 8. Performance Analysis
 *   **Comparison Table:**
 
-    | Model             | Recall    | Specificity  | Accuracy | F1-Score  |
-    |-------------------|-----------|------------|----------|-----------|
-    | **MobileNetV2**   |  99.90%   |   99.83%   |   99.87% |   0.9987  |
-    | **OPNet**         |  99.63%   |   99.83%   |   99.73% |   0.9973  |
+    | Model             |  Experiment   | Recall   | Specificity | Accuracy | F1-Score  |
+    |-------------------|---------------|----------|-------------|----------|-----------|
+    | **MobileNetV2**   |   Baseline    | 99.90%   |   99.83%    |   99.87% |   0.9987  |
+    | **OPNet**         |   Baseline    | 99.63%   |   99.83%    |   99.73% |   0.9973  |
 
 *   **Training Curves:**
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/baseline_training-performance.png" />
