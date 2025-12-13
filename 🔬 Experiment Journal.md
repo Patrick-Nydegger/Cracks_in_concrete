@@ -404,7 +404,7 @@ OPNet complete in 27m
 
 
 ### 9. Parameter Studies & Experiments
-*   **Comparison Table:**
+*   **Comparison Table (best epoch of the training / Winners):**
 
     | Model            |  Experiment   | Recall    | Specificity  | Accuracy | F1-Score  |
     |------------------|---------------|-----------|------------|----------|-----------|
