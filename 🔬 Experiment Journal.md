@@ -421,6 +421,22 @@ OPNet complete in 27m
 *   **Objective:**
     The goal of these experiments was to fine-tune our custom OPNet to close the small performance gap to the baseline, specifically focusing on maximizing Recall (Sensitivity) for safety reasons.
 
+* **Overall Conclusion & Winner Selection**
+
+Based on our extensive experimentation, we identified the optimal configuration for each architecture tailored to our safety-critical use case:
+
+*   **Best Baseline Model: MobileNetV2 with Weighted Loss (Epoch 7)**
+    *   **Reasoning:** This configuration achieved the "Holy Grail" of **100.00% Recall** on the validation set. For a safety inspection drone where missing a crack is unacceptable, this is the undisputed champion, offering perfect sensitivity with still excellent efficiency.
+
+*   **Best Custom Model: OPNet with Batch Size 32 (Epoch 9)**
+    *   **Reasoning:** While the "Weighted Loss" experiment pushed OPNet's recall to 99.97%, it came at a heavy cost to specificity (dropping to ~94%), which would cause too many false alarms. The **"Small Batch (32)"** version offers the best balance for the custom model: an outstanding **99.83% Recall** combined with a high **99.70% Specificity**, making it an incredibly efficient and robust alternative for extreme edge deployment.
+
+---
+
+**Hinweis:** Ich habe für OPNet bewusst "Small Batch" als Gewinner gewählt und nicht "Weighted Loss".
+*   *Warum?* Bei OPNet Weighted Loss hast du zwar 99.97% Recall, aber die Specificity ist auf 94.70% eingebrochen (viele Fehlalarme).
+*   Bei OPNet Small Batch hast du 99.83% Recall (fast so gut) aber 99.70% Specificity (viel besser). Das ist das gesündere, bessere Modell für die Praxis.
+
 *   **Experiment 1: Learning Rate Tuning**
     *   **Method:** We reduced the Learning Rate from $10^{-3}$ to $10^{-4}$ to allow for finer weight updates in the loss landscape.
     *   **Result:** The lower learning rate improved OPNet's Recall from 99.63% to 99.73%. The training was more stable in later epochs, avoiding oscillations. For MobileNetV2, it pushed Recall to a near-perfect 99.93%, albeit with a tiny drop in Specificity.
