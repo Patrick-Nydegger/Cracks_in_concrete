@@ -413,9 +413,9 @@ OPNet complete in 27m
     | **MobileNetV2**  | Low LR (1e-4) |  99.93%   |    99.73%  |  99.83%  |  0.9983   |
     | **OPNet**        | Low LR (1e-4) |  99.73%   |    99.73%  |  99.73%  |  0.9973   |
     | **MobileNetV2**  | Small Batch (32) |  99.90%   |    99.43%  |  99.67%  |  0.9967   |
-    | **OPNet**        | Small Batch (32) |  **99.83%**  |    99.70%  |  **99.77%**  |  **0.9977**   |
-    | **MobileNetV2**  | Weighted Loss    | 99.90%   |   99.83%   | 99.87% |  99.87%   |
-    | **OPNet**        | Weighted Loss    |  99.63%  |   99.80%   | 99.72% |  99.72%   |
+    | **OPNet**        | Small Batch (32) |  99.83%  |    99.70%  |  99.77%  |  0.9977   |
+    | **MobileNetV2**  | Weighted Loss    | 100.00%   |   99.60%   | 99.80% |  99.80%   |
+    | **OPNet**        | Weighted Loss    |  99.97%  |   94.70%   | 97.33% |  97.40%   |
 
     
 *   **Objective:**
