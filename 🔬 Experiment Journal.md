@@ -432,13 +432,14 @@ Based on our extensive experimentation, we identified the optimal configuration 
     *   **Reasoning:** While the "Weighted Loss" experiment pushed OPNet's recall to 99.97%, it came at a heavy cost to specificity (dropping to ~94%), which would cause too many false alarms. The **"Small Batch (32)"** version offers the best balance for the custom model: an outstanding **99.83% Recall** combined with a high **99.70% Specificity**, making it an incredibly efficient and robust alternative for extreme edge deployment.
 
 *   **Final Test Set Evaluation of the Winners**
---- MobileNetV2 (Winner) Results ---
+
+**MobileNetV2 (Winner) Results:**
 Recall (Sensitivity): 0.9987
 Specificity:          0.9993
 Accuracy:             0.9990
 F1-Score:             0.9990
 
---- OPNet (Winner) Results ---
+**OPNet (Winner) Results:**
 Recall (Sensitivity): 0.9983
 Specificity:          0.9967
 Accuracy:             0.9975
