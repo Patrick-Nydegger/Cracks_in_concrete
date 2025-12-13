@@ -585,6 +585,7 @@ We performed a qualitative visual inspection of the specific images where our mo
         *   **Reasoning:** The feature extraction layers failed to separate the faint crack signal from the high-frequency noise of the concrete surface. In some cases, the crack might simply be too thin for the resolution after pooling layers.
 
 *   **Hypothesis:** The models are highly sensitive to edge features. They fail when "noise" (debris) mimics these edges too perfectly (FP) or when the edges are washed out by texture (FN).
+*   **Visual Validation:** The following images illustrate these specific failure cases. By overlaying Grad-CAM heatmaps, we can visually confirm that the model's attention is indeed locked onto these misleading artifacts (like the dark wire in Error 2), validating that the error stems from feature ambiguity rather than random noise.
 
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/MobileNetV2_FP.png" />
 <img width="1385" height="955" alt="image" src="https://github.com/Patrick-Nydegger/Cracks_in_concrete/blob/main/media/MobileNetV2_FN.png" />
