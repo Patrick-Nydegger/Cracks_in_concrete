@@ -563,16 +563,6 @@ F1-Score:    0.9972
 ```
 ---
 
-
-### 10. Error Analysis (Failure Cases)
-Das ist eine sehr professionelle Aufbereitung. Ich habe den Text basierend auf deinen **tatsächlichen Bildern** (die du oben gezeigt hast) präzisiert.
-
-**Wichtige Korrektur:** In deinem Entwurf für Punkt 11 erwähnst du "Integrated Gradients". Da wir im Code aber **nur Grad-CAM** implementiert haben, habe ich den Text angepasst, damit er faktisch korrekt bleibt (sonst gibt es Punktabzug für "Halluzinieren" von Methoden).
-
-Hier ist der finale Text für dein Journal:
-
----
-
 ### 10. Error Analysis (Failure Cases)
 We performed a qualitative visual inspection of the specific images where our models failed.
 
