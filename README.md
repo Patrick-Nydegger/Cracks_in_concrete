@@ -33,7 +33,28 @@ To get started, simply open the notebook in Colab and ensure you have a GPU runt
 2.  Select **T4 GPU** (or another available GPU) from the "Hardware accelerator" dropdown menu.
 3.  You can access the platform here: [https://colab.research.google.com](https://colab.research.google.com)
 
-## 📝 Evaluation Criteria
+## � Requirements
+
+The following Python packages are required to run the notebooks in this project. The versions listed are those used in the development environment:
+
+- numpy==2.3.5
+- pandas==2.3.3
+- matplotlib==3.10.8
+- pillow==12.0.0
+- torch==2.7.1+cu118
+- torchvision==0.22.1+cu118
+- scikit-learn==1.8.0
+- seaborn==0.13.2
+
+You can install these packages using pip:
+
+```bash
+pip install numpy==2.3.5 pandas==2.3.3 matplotlib==3.10.8 pillow==12.0.0 torch==2.7.1+cu118 torchvision==0.22.1+cu118 scikit-learn==1.8.0 seaborn==0.13.2
+```
+
+Note: PyTorch versions with CUDA support (cu118) are specified for GPU acceleration. If running on CPU-only systems, you may need to adjust the PyTorch installation accordingly.
+
+## �📝 Evaluation Criteria
 
 The project will be evaluated based on the following criteria:
 
